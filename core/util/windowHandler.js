@@ -5,7 +5,7 @@ const path = require("path");
 const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 
 // Functions
-function spawnWindow(w, h) {
+function spawnWindow(w, h, resource_url) {
 
     const window = new BrowserWindow({
         width: w, 
@@ -17,7 +17,7 @@ function spawnWindow(w, h) {
     });
 
     window.loadURL(url.format({
-        pathname: path.join(__dirname, "../../public/html/index.html"),
+        pathname: resource_url,
         protocol: 'file:',
         slashes: true
     }))

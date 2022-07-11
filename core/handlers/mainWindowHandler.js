@@ -14,7 +14,7 @@ function spawn() {
 
     if (!window) {
 
-        window = windowHandler.spawnWindow(800, 600);
+        window = windowHandler.spawnWindow(800, 600, path.join(__dirname, "../../public/html/index.html"));
 
         window.on("closed", () => {
             window = undefined;

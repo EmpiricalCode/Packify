@@ -4,6 +4,8 @@ const url = require("url");
 
 const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 
+const windowHandler = require(path.join(__dirname, "../util/windowHandler.js"));
+
 // Let statments
 let window;
 
@@ -12,23 +14,10 @@ function spawn() {
 
     if (!window) {
 
-        window = new BrowserWindow({
-            width: 800, 
-            height: 600,
-            webPreferences : {
-                nodeIntegration: true,
-                contextIsolation: false
-            },
-        });
+        window = windowHandler.spawnWindow(800, 600);
 
-        window.loadURL(url.format({
-            pathname: path.join(__dirname, "../../public/html/index.html"),
-            protocol: 'file:',
-            slashes: true
-        }))
-        
         window.on("closed", () => {
-            mainWindow = undefined;
+            window = undefined;
         })
 
     } else {

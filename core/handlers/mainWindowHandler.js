@@ -14,7 +14,14 @@ function spawn() {
 
     if (!window) {
 
-        window = windowHandler.spawnWindow(800, 600, path.join(__dirname, "../../public/html/index.html"));
+        window = windowHandler.spawnWindow(path.join(__dirname, "../../public/html/index.html"), {
+            width: 800, 
+            height: 600,
+            webPreferences : {
+                nodeIntegration: true,
+                contextIsolation: false
+            },
+        });
 
         window.on("closed", () => {
             window = undefined;

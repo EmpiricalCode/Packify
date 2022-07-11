@@ -1,6 +1,6 @@
 {
   "name": "packify",
-  "version": "1.0.1-beta",
+  "version": "1.0.2-beta",
   "description": "",
   "main": "main.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "electron": "^19.0.8"
   },
   "build": {
-    "appId": "com.gaming.packify",
+    "appId": "com.packify.main",
     "protocols": {
       "name": "packify",
       "schemes": [

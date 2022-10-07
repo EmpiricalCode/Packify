@@ -26,6 +26,7 @@ async function spawnDownloadProcess(args) {
 
             let url, filename;
             
+            // Getting the URL and filename from the arguments
             [url, filename] = downloads[0];
 
             // Downloading the file
@@ -47,6 +48,9 @@ async function spawnDownloadProcess(args) {
                         file.close();
                         resolve();
                     });
+
+                }).on("error", () =>{
+                    dialog.showErrorBox("Error", "Failed to open download url.");
                 });
             })
 

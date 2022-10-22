@@ -1,6 +1,9 @@
 // Constants
 const path = require("path");
 const url = require("url");
+const fs = require("fs");
+
+const config = JSON.parse(fs.readFileSync(path.join(__dirname, "../../package.json"), "utf-8"));
 
 const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 
@@ -19,12 +22,19 @@ function spawn() {
             height: 600,
             webPreferences : {
                 nodeIntegration: true,
-                contextIsolation: false
+                preload: path.join(__dirname, "../preload.js")
             },
         });
 
         window.on("closed", () => {
             window = undefined;
+        })
+
+        // Communication
+        ipcMain.handle("request-app-version", async (event, args) => {
+            return new Promise((resolve, reject) => {
+                resolve(config.version);
+            })
         })
 
     } else {

@@ -1,1 +1,3 @@
-const { ipcRenderer } = require("electron/renderer");
+window.system.requestAppVersion().then((version) => {
+    document.getElementById("app-version").innerHTML = version;
+})

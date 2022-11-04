@@ -20,9 +20,10 @@ function spawn() {
         window = windowHandler.spawnWindow(path.join(__dirname, "../../public/html/index.html"), {
             width: 800, 
             height: 600,
+            frame: false,
             webPreferences : {
                 nodeIntegration: true,
-                preload: path.join(__dirname, "../preload.js")
+                preload: path.join(__dirname, "../preloaders/mainPreload.js"),
             },
         });
 

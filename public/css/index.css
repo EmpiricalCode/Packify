@@ -1,0 +1,9 @@
+/* Elements */
+body {
+    background: rgb(22, 22, 22);
+}
+
+p {
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

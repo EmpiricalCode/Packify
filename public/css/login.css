@@ -4,6 +4,11 @@
     src: url("../assets/monserrat.woff") format("woff");
 }
 
+@font-face {
+    font-family: "Quicksand";
+    src: url("../assets/quicksand.woff") format("woff");
+}
+
 /* Elements */
 body {
     background: rgb(22, 22, 22);
@@ -13,48 +18,74 @@ body {
 }
 
 input {
-
     background: rgb(22, 22, 22);
-    height: 30px;
-    width: calc(100% - 16px);
+    height: 35px;
+    width: calc(100% - 4px);
 
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-right: 6px;
-    padding-left: 6px;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid rgb(73, 73, 73);
 
-    border-style: solid;
-    border: 2px, rgb(32, 32, 32);
-    border-radius: 5px;
+    color: rgb(176, 176, 176);
+    font-family: "Quicksand";
+    font-size: 17px;
+
+    transition: 0.5s;
+}
+
+input:focus {
+    border-bottom: 1px solid rgb(200, 200, 200);
 }
 
 /* Classes */
 .subtitle {
-    font-family: "Monserrat";
+    font-family: "Quicksand";
     font-size: 17px;
-    font-weight: 100;
+    font-weight: 300;
     color: white;
+
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 /* IDs */
 #logo {
-    width: 210px;
-    height: 210px;
+    width: 250px;
+    height: 250px;
 
     position: absolute;
-    left: calc(50% - 105px);
-    top: -25px;
+    left: calc(50% - 125px);
+    top: -35px;
 }
 
 #login-form {
-
     padding: 0px;
-
     position: absolute;
 
-    top: 100px;
-    left: 10px;
-    left: calc(50% - 130px);
+    top: 140px;
+    left: calc(50% - 120px);
+    width: 240px;
+}
 
-    width: 260px;
+#submit {
+    margin-top: 30px;
+    
+    width: 100%;
+    height: 45px;
+
+    border: none;
+    outline: none;
+    
+    font-family: "Quicksand";
+    font-size: 16px;
+
+    color: white;
+    background: rgb(92, 136, 92);
+
+    transition: 0.5s;
+}
+
+#submit:hover {
+    cursor: pointer;
+    background: rgb(123, 170, 123);
 }

@@ -7,45 +7,46 @@ const config = JSON.parse(fs.readFileSync(path.join(__dirname, "../../package.js
 
 const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 
-const windowHandler = require(path.join(__dirname, "../util/windowHandler.js"));
+const WindowHandler = require(path.join(__dirname, "../util/windowHandler.js"));
 
-// Let statments
-let window;
+// Class
+class MainWindowHandler extends WindowHandler {
 
-// Functions
-function spawn() {
+    static spawn() {
 
-    if (!window) {
+        if (!this.window) {
 
-        window = windowHandler.spawnWindow(path.join(__dirname, "../../public/html/index.html"), {
-            width: 800, 
-            height: 600,
-            frame: false,
-            webPreferences : {
-                nodeIntegration: true,
-                preload: path.join(__dirname, "../preloaders/mainPreload.js"),
-            },
-        });
-
-        window.on("closed", () => {
-            window = undefined;
-        })
-
-        // Communication
-        ipcMain.handle("request-app-version", async (event, args) => {
-            return new Promise((resolve, reject) => {
-                resolve(config.version);
+            this.window = WindowHandler.spawnWindow(path.join(__dirname, "../../public/html/index.html"), {
+                width: 800, 
+                height: 600,
+                frame: false,
+                webPreferences : {
+                    preload: path.join(__dirname, "../preloaders/mainPreload.js"),
+                },
+                show: false,
             })
-        })
 
-    } else {
-        window.focus();
+            // Handle window closed
+            this.window.on("closed", () => {
+                this.window = undefined;
+            })
+
+            // handle window open
+            this.window.once("ready-to-show", () => {
+                this.window.show();
+            })
+
+            // Communication
+            ipcMain.handle("request-app-version", async (event, args) => {
+                return new Promise((resolve, reject) => {
+                    resolve(config.version);
+                })
+            })
+
+        } else {
+            this.window.focus();
+        }
     }
 }
 
-function getWindow() {
-    return window;
-}
-
-module.exports.getWindow = getWindow;
-module.exports.spawn = spawn;
+module.exports = MainWindowHandler;

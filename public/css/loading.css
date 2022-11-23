@@ -1,0 +1,60 @@
+/* Elements */
+body {
+    background: rgb(22, 22, 22);
+    padding: 0px;
+
+    overflow: hidden;
+}
+
+p {
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Classes */
+.hidden {
+    opacity: 0;
+}
+
+.visible {
+    opacity: 1;
+}
+
+/* IDs */
+#logo {
+    width: 300px;
+    height: 300px;
+
+    position: absolute;
+    left: calc(50% - 150px);
+    top: -30px;
+
+    margin: 0px;
+
+    transition: 1s;
+} 
+
+#loading-icon {
+    width: 23px;
+    height: 23px;
+
+    position: absolute;
+    left: calc(50% - 11.5px);
+    top: 150px;
+
+    margin: 0px;
+
+    -webkit-animation: rotating 3s linear infinite;
+
+    transition: 2s;
+}
+
+/* Webkit */
+@-webkit-keyframes rotating {
+    from{
+        -webkit-transform: rotate(0deg);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+    }
+}

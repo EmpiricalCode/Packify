@@ -1,3 +1,3 @@
-window.system.onDownloadArgs().then((event, args) => {
+window.system.onDownloadArgs((event, args) => {
     console.log(args);
 })

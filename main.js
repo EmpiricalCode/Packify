@@ -6,6 +6,7 @@ const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 
 const mainWindowHandler = require(path.join(__dirname, "core/handlers/mainWindowHandler.js"));
 const downloadWindowHandler = require(path.join(__dirname, "core/handlers/downloadWindowHandler.js"));
+const loadingWindowHandler = require(path.join(__dirname, "core/handlers/loadingWindowHandler.js"));
 const config = require(path.join(__dirname, "core/config.js"));
 
 // This needs to be done because there is a bug where
@@ -57,7 +58,11 @@ app.on("second-instance", (event, argv, cwd) => {
 
     //Second instance prompted by regular opening of application
     } else {
-        mainWindowHandler.spawn();
+        if (loadingWindowHandler.window) {
+            loadingWindowHandler.spawn();
+        } else {
+            mainWindowHandler.spawn();
+        }
     }
 });
 
@@ -82,7 +87,12 @@ app.on("ready", () => {
         }
     // App was opened regularly
     } else {
-        mainWindowHandler.spawn();
+        if (mainWindowHandler.window) {
+            
+            mainWindowHandler.spawn();
+        } else {
+            loadingWindowHandler.spawn();
+        }
     }
 })
 

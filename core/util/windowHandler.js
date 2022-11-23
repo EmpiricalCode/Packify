@@ -4,18 +4,30 @@ const path = require("path");
 
 const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 
-// Functions
-function spawnWindow(resource_url, preferences) {
+// Class
+class WindowHandler {
 
-    const window = new BrowserWindow(preferences);
+    static window;
 
-    window.loadURL(url.format({
-        pathname: resource_url,
-        protocol: 'file:',
-        slashes: true
-    }))
+    static spawn() {
+        console.log("No spawn method was initilized");
+    }
 
-    return window;
+    static getWindow() {
+        return this.window;
+    }
+
+    static spawnWindow(resource_url, preferences) {
+
+        const window = new BrowserWindow(preferences);
+
+        window.loadURL(url.format({
+            pathname: resource_url,
+            protocol: 'file:',
+            slashes: true
+        }))
+
+        return window;
+    }
 }
-
-module.exports.spawnWindow = spawnWindow;
+module.exports = WindowHandler;

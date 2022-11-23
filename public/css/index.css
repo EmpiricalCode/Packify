@@ -1,9 +1,28 @@
 /* Elements */
 body {
+    user-select: none;
+    padding: none;
+
     background: rgb(22, 22, 22);
 }
 
 p {
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Classes */
+
+/* IDs */
+#body-container {
+    z-index: -100;
+
+    width: 0%;
+    height: 100%;
+
+    position: absolute;
+    top: 0px;
+    left: 50%;
+
+    background: rgb(22, 22, 22);
 }

@@ -1,0 +1,19 @@
+/* Elements */
+body {
+    background: rgb(22, 22, 22);
+    padding: 0px;
+
+    overflow: hidden;
+}
+
+/* Classes */
+
+/* IDs */
+#logo {
+    width: 210px;
+    height: 210px;
+
+    position: absolute;
+    left: calc(50% - 105px);
+    top: -25px;
+}

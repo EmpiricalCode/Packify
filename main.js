@@ -12,7 +12,7 @@ const config = require(path.join(__dirname, "core/config.js"));
 // This needs to be done because there is a bug where
 // when the app is launched from a deep link, the cwd will be System32 (and we don't have permissions there)
 process.chdir(path.resolve(__dirname, "../"));
- 
+
 // Functions
 function getDeepUrl(argv) {
 

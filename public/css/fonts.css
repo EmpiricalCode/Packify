@@ -1,0 +1,10 @@
+/* Font Face */
+@font-face {
+    font-family: "Monserrat";
+    src: url("../assets/monserrat.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Quicksand";
+    src: url("../assets/quicksand.woff") format("woff");
+}

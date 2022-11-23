@@ -8,3 +8,13 @@
     font-family: "Quicksand";
     src: url("../assets/quicksand.woff") format("woff");
 }
+
+@font-face {
+    font-family: "Poppins";
+    src: url("../assets/poppins.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("../assets/opensans.woff") format("woff");
+}

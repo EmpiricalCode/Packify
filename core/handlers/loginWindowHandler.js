@@ -10,9 +10,6 @@ const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 const MainWindowHandler = require(path.join(__dirname, "../handlers/mainWindowHandler.js"));
 const WindowHandler = require(path.join(__dirname, "../util/windowHandler.js"));
 
-// Let statments
-let window;
-
 // Functions
 class LoginWindowHandler extends WindowHandler {
 

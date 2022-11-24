@@ -6,8 +6,14 @@ body {
     background: rgb(22, 22, 22);
 }
 
-p, a, h1, h2, h3, h4, h5, h6, input, button {
+p, h1, h2, h3, h4, h5, h6, input, button {
     color: rgb(148, 148, 148);
+    font-size: 14px;
+    font-family: "Gotham", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+    color: rgb(88, 143, 88);
     font-size: 14px;
     font-family: "Gotham", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -22,7 +28,6 @@ input {
 
     color: rgb(176, 176, 176);
 
-    padding-left: 30px;
     padding-right: 10px;
 }
 

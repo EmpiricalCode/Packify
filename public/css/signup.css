@@ -4,6 +4,7 @@ input {
     transition: 0.5s;
 
     margin-top: 20px;
+    padding-left: 28px;
 }
 
 input:focus {
@@ -21,8 +22,8 @@ input:focus {
 }
 
 .input-icon {
-   width: 20px;
-   height: 20px;
+   width: 17px;
+   height: 17px;
 
    position: absolute;
    left: 7px;
@@ -41,19 +42,19 @@ input:focus {
 
 /* IDs */
 #email-icon {
-    top: 30px;
+    top: 31px;
 
     filter: brightness(60%);
 }
 
 #avatar-icon {
-    top: 88px;
+    top: 91px;
 
     filter: brightness(70%);
 }
 
 #lock-icon {
-    top: 147px;
+    top: 149px;
 
     filter: brightness(80%);
 }

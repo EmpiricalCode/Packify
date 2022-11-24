@@ -4,6 +4,7 @@ input {
     transition: 0.5s;
 
     margin-top: 20px;
+    padding-left: 28px;
 }
 
 /* Classes */
@@ -17,8 +18,8 @@ input {
 }
 
 .input-icon {
-   width: 20px;
-   height: 20px;
+   width: 17px;
+   height: 17px;
 
    position: absolute;
    left: 7px;
@@ -37,7 +38,7 @@ input {
 
 /* IDs */
 #avatar-icon {
-    top: 30px;
+    top: 31px;
 
     filter: brightness(80%);
 }
@@ -58,7 +59,7 @@ input {
 }
 
 #lock-icon {
-    top: 87px;
+    top: 89px;
 
     filter: brightness(70%);
 }

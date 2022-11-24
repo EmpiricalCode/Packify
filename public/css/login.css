@@ -9,7 +9,7 @@ body {
 input {
     background: rgb(22, 22, 22);
     height: 35px;
-    width: calc(100% - 22px);
+    width: calc(100% - 42px);
 
     outline: 0;
     border: 1px solid rgb(59, 59, 59);
@@ -18,7 +18,7 @@ input {
     color: rgb(176, 176, 176);
 
     margin-top: 20px;
-    padding-left: 10px;
+    padding-left: 30px;
     padding-right: 10px;
 
     transition: 0.5s;
@@ -44,6 +44,14 @@ p, input, button {
     margin-bottom: 0px;
 }
 
+.input-icon {
+   width: 20px;
+   height: 20px;
+
+   position: absolute;
+   left: 7px;
+}
+
 .divider {
     margin-top: 30px;
     margin-bottom: 30px;
@@ -56,6 +64,18 @@ p, input, button {
 }
 
 /* IDs */
+#avatar-icon {
+    top: 30px;
+
+    filter: brightness(80%);
+}
+
+#lock-icon {
+    top: 87px;
+
+    filter: brightness(70%);
+}
+
 #logo {
     width: 290px;
     height: 290px;

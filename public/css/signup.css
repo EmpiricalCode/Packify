@@ -6,6 +6,10 @@ input {
     margin-top: 20px;
 }
 
+input:focus {
+    border: 1px solid rgb(200, 200, 200);
+}
+
 /* Classes */
 .subtitle {
     font-weight: 500;
@@ -36,18 +40,30 @@ input {
 }
 
 /* IDs */
-#avatar-icon {
+#email-icon {
     top: 30px;
+
+    filter: brightness(60%);
+}
+
+#avatar-icon {
+    top: 88px;
+
+    filter: brightness(70%);
+}
+
+#lock-icon {
+    top: 147px;
 
     filter: brightness(80%);
 }
 
-#signup-prompt {
+#login-prompt {
 
     background: rgb(22, 22, 22);
 
     position: absolute;
-    top: 150px;
+    top: 210px;
 
     width: 100px;
     left: calc(50% - 50px);
@@ -55,12 +71,6 @@ input {
     text-align: center;
     margin-top: -10px;
 
-}
-
-#lock-icon {
-    top: 87px;
-
-    filter: brightness(70%);
 }
 
 #logo {

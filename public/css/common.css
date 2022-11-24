@@ -1,0 +1,31 @@
+/* Elements */
+body {
+    user-select: none;
+    padding: none;
+
+    background: rgb(22, 22, 22);
+}
+
+p, a, h1, h2, h3, h4, h5, h6, input, button {
+    color: rgb(148, 148, 148);
+    font-size: 14px;
+    font-family: "Gotham", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input {
+    background: rgb(22, 22, 22);
+    height: 35px;
+
+    outline: 0;
+    border: 1px solid rgb(59, 59, 59);
+    border-radius: 3px;
+
+    color: rgb(176, 176, 176);
+
+    padding-left: 30px;
+    padding-right: 10px;
+}
+
+input:focus {
+    border: 1px solid rgb(200, 200, 200);
+}

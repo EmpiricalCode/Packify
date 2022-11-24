@@ -7,11 +7,6 @@ body {
     user-select: none;
 }
 
-p {
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 /* Classes */
 .hidden {
     opacity: 0;

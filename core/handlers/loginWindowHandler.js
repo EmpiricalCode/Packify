@@ -20,7 +20,7 @@ class LoginWindowHandler extends WindowHandler {
             // Spawn window
             this.window = WindowHandler.spawnWindow(path.join(__dirname, "../../public/html/login.html"), {
                 width: 310, 
-                height: 490,
+                height: 440,
                 frame: false,
                 webPreferences : {
                     preload: path.join(__dirname, "../preloaders/loginPreload.js"),

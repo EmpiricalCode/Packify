@@ -13,6 +13,10 @@ const WindowHandler = require(path.join(__dirname, "../structures/windowHandler.
 // Class
 class MainWindowHandler extends WindowHandler {
 
+    static channels = [
+        "request-app-version"
+    ]
+
     static spawn() {
 
         if (!this.window) {

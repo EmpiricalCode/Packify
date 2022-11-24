@@ -13,6 +13,10 @@ const WindowHandler = require(path.join(__dirname, "../structures/windowHandler.
 // Functions
 class SignupWindowHandler extends WindowHandler {
 
+    static channels = [
+        "signup"
+    ];
+
     static spawn() {
 
         if (!this.window) {
@@ -39,6 +43,12 @@ class SignupWindowHandler extends WindowHandler {
 
             // Handle window closed
             this.window.once("closed", () => {
+
+                // Removing all communication listeners once the window is closed
+                this.channels.forEach((channel) => {
+                    ipcMain.removeAllListeners(channel);
+                });
+
                 this.window = undefined;
             })
 
@@ -54,6 +64,11 @@ class SignupWindowHandler extends WindowHandler {
                     }, 200);
                 })
             }, 220);
+
+            ipcMain.on("signup", (event, data) => {
+                console.log("data recieved");
+                console.log(data);
+            });
 
         } else {
             this.window.focus();

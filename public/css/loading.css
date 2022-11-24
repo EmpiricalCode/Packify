@@ -4,6 +4,7 @@ body {
     padding: 0px;
 
     overflow: hidden;
+    user-select: none;
 }
 
 p {

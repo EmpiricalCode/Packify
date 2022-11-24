@@ -4,6 +4,7 @@ body {
     padding: 0px;
 
     overflow: hidden;
+    user-select: none;
 }
 
 input {
@@ -68,6 +69,21 @@ p, input, button {
     top: 30px;
 
     filter: brightness(80%);
+}
+
+#signup-prompt {
+
+    background: rgb(22, 22, 22);
+
+    position: absolute;
+    top: 150px;
+
+    width: 100px;
+    left: calc(50% - 50px);
+
+    text-align: center;
+    margin-top: -10px;
+
 }
 
 #lock-icon {

@@ -15,6 +15,41 @@
 }
 
 @font-face {
+    font-family: "Poppins Light";
+    src: url("../assets/poppinslight.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Poppins Light Italic";
+    src: url("../assets/poppinslightitalic.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Poppins Medium";
+    src: url("../assets/poppinsmedium.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Poppins Medum Italic";
+    src: url("../assets/poppinsmediumitalic.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Poppins Semibold";
+    src: url("../assets/poppinssemibold.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Poppins Semibold Italic";
+    src: url("../assets/poppinssemibolditalic.woff") format("woff");
+}
+
+@font-face {
     font-family: "Open Sans";
     src: url("../assets/opensans.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Open Sans Semibold";
+    src: url("../assets/opensanssemibold.woff") format("woff");
 }

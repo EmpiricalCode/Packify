@@ -17,7 +17,7 @@ input {
 
     color: rgb(176, 176, 176);
 
-    margin-top: 20px;
+    margin-top: 30px;
     padding-left: 10px;
     padding-right: 10px;
 
@@ -29,9 +29,9 @@ input:focus {
 }
 
 p, input, button {
-    font-family: "Open Sans", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Noto Sans", Tahoma, Geneva, Verdana, sans-serif;
     color: rgb(148, 148, 148);
-    font-size: 17px;
+    font-size: 15px;
 }
 
 /* Classes */
@@ -72,8 +72,8 @@ p, input, button {
     border: none;
     outline: none;
 
-    color: rgb(88, 143, 88);
-    background: transparent;
+    color: white;
+    background: rgb(88, 143, 88);
 
     border: 2px solid rgb(88, 143, 88);
     border-radius: 3px;
@@ -84,5 +84,5 @@ p, input, button {
 #submit:hover {
     cursor: pointer;
     border: 2px solid rgb(148, 189, 148);
-    color: rgb(148, 189, 148);
+    background: rgb(148, 189, 148);
 }

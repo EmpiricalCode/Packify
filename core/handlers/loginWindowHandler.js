@@ -7,8 +7,8 @@ const config = JSON.parse(fs.readFileSync(path.join(__dirname, "../../package.js
 
 const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 
-const MainWindowHandler = require(path.join(__dirname, "../handlers/mainWindowHandler.js"));
-const WindowHandler = require(path.join(__dirname, "../util/windowHandler.js"));
+const WindowController = require(path.join(__dirname, "../controllers/windowController.js"));
+const WindowHandler = require(path.join(__dirname, "../structures/windowHandler.js"));
 
 // Functions
 class LoginWindowHandler extends WindowHandler {
@@ -32,15 +32,29 @@ class LoginWindowHandler extends WindowHandler {
 
             // Handle window open
             this.window.once("ready-to-show", () => {
+
                 setTimeout(() => {
                     this.window.show();
                 }, 1000);
             })
 
             // Handle window closed
-            this.window.on("closed", () => {
+            this.window.once("closed", () => {
                 this.window = undefined;
             })
+
+            // Handle Communication
+            // Preventing spamming the signup-prompt button
+            setTimeout(() => {
+                ipcMain.once("prompt-signup", () => {
+
+                    WindowController.spawnWindow("SignupWindowHandler");
+
+                    setTimeout(() => {
+                        this.window.close();
+                    }, 200);
+                })
+            }, 220);
 
         } else {
             this.window.focus();

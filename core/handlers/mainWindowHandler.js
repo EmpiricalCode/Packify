@@ -7,7 +7,8 @@ const config = JSON.parse(fs.readFileSync(path.join(__dirname, "../../package.js
 
 const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 
-const WindowHandler = require(path.join(__dirname, "../util/windowHandler.js"));
+const WindowController = require(path.join(__dirname, "../controllers/windowController.js"));
+const WindowHandler = require(path.join(__dirname, "../structures/windowHandler.js"));
 
 // Class
 class MainWindowHandler extends WindowHandler {

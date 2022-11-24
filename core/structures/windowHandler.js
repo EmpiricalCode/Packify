@@ -8,6 +8,7 @@ const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 class WindowHandler {
 
     static window;
+    static registered_windows = [];
 
     static spawn() {
         console.log("No spawn method was initilized");

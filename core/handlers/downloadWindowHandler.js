@@ -6,7 +6,8 @@ const https = require("https");
 
 const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 
-const WindowHandler = require(path.join(__dirname, "../util/windowHandler.js"));
+const WindowController = require(path.join(__dirname, "../controllers/windowController.js"));
+const WindowHandler = require(path.join(__dirname, "../structures/windowHandler.js"));
 
 // Let statments
 let window;

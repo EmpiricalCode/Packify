@@ -6,42 +6,29 @@ const fs = require("fs");
 const config = JSON.parse(fs.readFileSync(path.join(__dirname, "../../package.json"), "utf-8"));
 
 const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
+
 const WindowController = require(path.join(__dirname, "../controllers/windowController.js"));
 const WindowHandler = require(path.join(__dirname, "../structures/windowHandler.js"));
 
-// Let statments
-let window;
-
 // Functions
-class LoadingWindowHandler extends WindowHandler {
+class SignupWindowHandler extends WindowHandler {
 
     static spawn() {
 
         if (!this.window) {
 
             // Spawn window
-            this.window = WindowHandler.spawnWindow(path.join(__dirname, "../../public/html/loading.html"), {
-                width: 320, 
-                height: 240,
+            this.window = WindowHandler.spawnWindow(path.join(__dirname, "../../public/html/signup.html"), {
+                width: 310, 
+                height: 500,
                 frame: false,
                 webPreferences : {
-                    preload: path.join(__dirname, "../preloaders/loadingPreload.js"),
+                    preload: path.join(__dirname, "../preloaders/signupPreload.js"),
                 },
                 show: false,
             });
 
             this.window.setResizable(false);
-
-            // Process loading
-            setTimeout(() => {
-
-                this.window.hide();
-                
-                setTimeout(() => {
-                    WindowController.spawnWindow("LoginWindowHandler");
-                    this.window.close();
-                }, 1000);
-            }, 10000);
 
             // Handle window open
             this.window.once("ready-to-show", () => {
@@ -51,9 +38,22 @@ class LoadingWindowHandler extends WindowHandler {
             })
 
             // Handle window closed
-            this.window.on("closed", () => {
+            this.window.once("closed", () => {
                 this.window = undefined;
             })
+
+            // Handle Communication
+            // Preventing spamming the login-prompt button
+            setTimeout(() => {
+                ipcMain.once("prompt-login", () => {
+
+                    WindowController.spawnWindow("LoginWindowHandler");
+
+                    setTimeout(() => {
+                        this.window.close();
+                    }, 200);
+                })
+            }, 220);
 
         } else {
             this.window.focus();
@@ -61,4 +61,4 @@ class LoadingWindowHandler extends WindowHandler {
     }
 }
 
-module.exports = LoadingWindowHandler;
+module.exports = SignupWindowHandler;

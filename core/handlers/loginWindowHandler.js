@@ -3,7 +3,7 @@ const path = require("path");
 const url = require("url");
 const fs = require("fs");
 
-const config = JSON.parse(fs.readFileSync(path.join(__dirname, "../../package.json"), "utf-8"));
+const config = require(path.join(__dirname, "../config.js"));
 
 const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 

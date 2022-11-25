@@ -3,7 +3,8 @@ const path = require("path");
 const url = require("url");
 const fs = require("fs");
 
-const config = JSON.parse(fs.readFileSync(path.join(__dirname, "../../package.json"), "utf-8"));
+const API = require(path.join(__dirname, "../APICore.js"));
+const config = require(path.join(__dirname, "../config.js"));
 
 const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 
@@ -70,8 +71,16 @@ class SignupWindowHandler extends WindowHandler {
             ipcMain.on("signup", (event, data) => {
                 
                 const [salt, hash] = hashString(data.password);
+                const formatted_data = {"username" : data.username, "email" : data.email, "password" : hash, "salt" : salt};
 
-                console.log(salt + " " + hash)
+                // Handing POST request to api
+                API.request(config.api_gateway_url, "/signup", formatted_data, (success, res) => {
+                    if (success) {
+                        console.log(res.token);
+                    } else {
+                        console.log(res.error);
+                    }
+                })
             });
 
         } else {

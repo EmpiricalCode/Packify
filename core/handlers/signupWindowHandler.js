@@ -10,6 +10,8 @@ const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 const WindowController = require(path.join(__dirname, "../controllers/windowController.js"));
 const WindowHandler = require(path.join(__dirname, "../structures/windowHandler.js"));
 
+const hashString = require("../util/hashString.js");
+
 // Functions
 class SignupWindowHandler extends WindowHandler {
 
@@ -66,8 +68,10 @@ class SignupWindowHandler extends WindowHandler {
             }, 220);
 
             ipcMain.on("signup", (event, data) => {
-                console.log("data recieved");
-                console.log(data);
+                
+                const [salt, hash] = hashString(data.password);
+
+                console.log(salt + " " + hash)
             });
 
         } else {

@@ -49,12 +49,9 @@ class LoginWindowHandler extends WindowHandler {
                 ipcMain.once("prompt-signup", () => {
 
                     WindowController.spawnWindow("SignupWindowHandler");
-
-                    setTimeout(() => {
-                        this.window.close();
-                    }, 200);
+                    this.window.close();
                 })
-            }, 220);
+            }, 100);
 
         } else {
             this.window.focus();

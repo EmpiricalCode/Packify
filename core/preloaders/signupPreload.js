@@ -9,5 +9,11 @@ contextBridge.exposeInMainWorld("system", {
 
     signup: (data) => {
         ipcRenderer.send("signup", data);
+    },
+
+    signupFinished: (callback) => {
+        ipcRenderer.once("signup-finished", (data) => {
+            callback(data);
+        });
     }
 })

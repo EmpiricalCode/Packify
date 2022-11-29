@@ -107,11 +107,11 @@ input:focus {
     border: 2px solid rgb(88, 143, 88);
     border-radius: 3px;
 
+    cursor: pointer;
     transition: 0.5s;
 }
 
 #submit:hover {
-    cursor: pointer;
     border: 2px solid rgb(148, 189, 148);
     background: rgb(148, 189, 148);
 }

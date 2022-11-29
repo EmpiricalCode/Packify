@@ -1,5 +1,5 @@
 // Constants
-const http = require('http');
+const https = require('https');
 
 // Functions
 function request(host, path, data, callback) {
@@ -19,7 +19,7 @@ function request(host, path, data, callback) {
   }
 
   // Making request
-  const req = http.request(options, (res) => {
+  const req = https.request(options, (res) => {
 
     // Request is OK
     if (res.statusCode == 200) {

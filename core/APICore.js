@@ -31,7 +31,12 @@ function request(host, path, data, callback) {
       })
   
       res.on("end", () => {
-        callback(true, JSON.parse(response_data));
+        try {
+          const data = JSON.parse(response_data);
+          callback(true, data);
+        } catch {
+          callback(false, {"error" : "Invalid JSON data was provided"});
+        }
       })
 
     // Request is not OK

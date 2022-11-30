@@ -77,6 +77,8 @@ class SignupWindowHandler extends WindowHandler {
                     } else {
                         console.log(res.error);
                     }
+
+                    this.window.webContents.send("signup-finished", res);
                 })
             });
 

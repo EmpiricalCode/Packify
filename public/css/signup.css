@@ -11,6 +11,11 @@ input:focus {
     border: 1px solid rgb(200, 200, 200);
 }
 
+button {
+    background: rgb(88, 143, 88);
+    border: 2px solid rgb(88, 143, 88);
+}
+
 /* Classes */
 .subtitle {
     font-weight: 500;
@@ -40,7 +45,34 @@ input:focus {
     height: 1px;
 }
 
+.submit-pressed {
+    border: 2px solid rgb(148, 189, 148);
+    background: rgb(148, 189, 148);
+
+    color: rgba(255, 255, 255, 0);
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.visible {
+    opacity: 1;
+}
+
 /* IDs */
+#loading-icon {
+    width: 16px;
+    height: 16px;
+
+    -webkit-animation: rotating 3s linear infinite;
+
+    position: fixed;
+
+    left: calc(50% - 6px);
+    transition: 0.5s;
+}
+
 #email-icon {
     top: 31px;
 
@@ -100,18 +132,19 @@ input:focus {
 
     border: none;
     outline: none;
-
-    color: white;
-    background: rgb(88, 143, 88);
-
-    border: 2px solid rgb(88, 143, 88);
+    
     border-radius: 3px;
 
     cursor: pointer;
     transition: 0.5s;
 }
 
-#submit:hover {
-    border: 2px solid rgb(148, 189, 148);
-    background: rgb(148, 189, 148);
+/* Webkit */
+@-webkit-keyframes rotating {
+    from{
+        -webkit-transform: rotate(0deg);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+    }
 }

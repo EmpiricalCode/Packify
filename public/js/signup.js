@@ -3,11 +3,20 @@ var emailField = document.getElementById("email-field");
 var usernameField = document.getElementById("username-field");
 var passwordField = document.getElementById("password-field");
 var signupButton = document.getElementById("submit");
+var loadingIcon = document.getElementById("loading-icon");
 
 // Variables
 var canSignup = true;
 
 // Functions
+function submitHoverOver() {
+    signupButton.classList.add("submit-hover");
+}
+
+function submitHoverOut() {
+    signupButton.classList.remove("submit-hover");
+}
+
 function login() {
     window.system.promptLogin();
 }
@@ -20,14 +29,19 @@ function signup() {
 
         window.system.signup(data);
 
-        signupButton.style.border = "2px solid rgb(148, 189, 148)";
-        signupButton.style.background = "rgb(148, 189, 148)";
-        signupButton.style.cursor = "auto";
+        signupButton.classList.add("submit-pressed");
+        signupButton.style.pointerEvents = "none";
+        
+        loadingIcon.classList.add("visible");
+        loadingIcon.classList.remove("hidden");
 
         window.system.signupFinished((data) => {
-            signupButton.style.border = "2px solid rgb(88, 143, 88)";
-            signupButton.style.background = "rgb(88, 143, 88)";
-            signupButton.style.cursor = "pointer";
+
+            signupButton.classList.remove("submit-pressed");
+            signupButton.style.pointerEvents = "auto";
+
+            loadingIcon.classList.add("hidden");
+            loadingIcon.classList.remove("visible"); 
 
             canSignup = true;
         })

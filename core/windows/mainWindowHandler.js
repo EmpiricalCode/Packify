@@ -7,7 +7,7 @@ const config = require(path.join(__dirname, "../config.js"));
 
 const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 
-const WindowController = require(path.join(__dirname, "../controllers/windowController.js"));
+const WindowController = require(path.join(__dirname, "../windows/windowController.js"));
 const WindowHandler = require(path.join(__dirname, "../structures/windowHandler.js"));
 
 // Class

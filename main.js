@@ -4,9 +4,9 @@ const url = require("url");
 
 const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 
-const mainWindowHandler = require(path.join(__dirname, "core/handlers/mainWindowHandler.js"));
-const downloadWindowHandler = require(path.join(__dirname, "core/handlers/downloadWindowHandler.js"));
-const loadingWindowHandler = require(path.join(__dirname, "core/handlers/loadingWindowHandler.js"));
+const mainWindowHandler = require(path.join(__dirname, "core/windows/mainWindowHandler.js"));
+const downloadWindowHandler = require(path.join(__dirname, "core/windows/downloadWindowHandler.js"));
+const loadingWindowHandler = require(path.join(__dirname, "core/windows/loadingWindowHandler.js"));
 const config = require(path.join(__dirname, "core/config.js"));
 
 // This needs to be done because there is a bug where

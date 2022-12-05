@@ -34,7 +34,13 @@ function request(host, path, data, callback) {
         if (!timedOut) {
           try {
             const data = JSON.parse(response_data);
-            callback(true, data);
+
+            if (data.error) {
+              callback(false, data);
+            } else {
+              callback(true, data);
+            }
+            
           } catch {
             callback(false, {"error" : "Invalid JSON data was provided"});
           }

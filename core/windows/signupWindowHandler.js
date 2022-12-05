@@ -72,6 +72,7 @@ class SignupWindowHandler extends WindowHandler {
 
                 // Handing POST request to api
                 API.request(config.api_gateway_url, "/signup", formatted_data, (success, res) => {
+
                     if (success) {
                         console.log(res.token);
                     } else {

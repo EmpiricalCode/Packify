@@ -15,12 +15,15 @@ const config = require(path.join(__dirname, "core/config.js"));
 // when the app is launched from a deep link, the cwd will be System32 (and we don't have permissions there)
 process.chdir(path.resolve(__dirname, "../"));
 
+// App data Initialization
+if (!fs.existsSync(`${config.app_data_path}`)) {
+    fs.mkdirSync(`${config.app_data_path}`);
+}
+
 // DB Initialization
 if (!fs.existsSync(`${config.app_data_path}/DB`)) {
     fs.mkdirSync(`${config.app_data_path}/DB`);
 }
-
-const userInfoDB = db.create(`${config.app_data_path}/DB`, "User Info");
 
 // Functions
 function getDeepUrl(argv) {

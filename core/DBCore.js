@@ -10,7 +10,10 @@ module.exports.read = (dir) => {
   return data;
 }
 
-module.exports.set = (dir, json) => {
+module.exports.set = (dir, key, value) => {
+
+  const json = module.exports.createObject(key, value);
+
   var rawdata = FS.readFileSync(dir);
   var data = JSON.parse(rawdata);
 

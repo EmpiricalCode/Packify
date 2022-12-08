@@ -12,7 +12,7 @@ const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 const WindowController = require(path.join(__dirname, "../windows/windowController.js"));
 const WindowHandler = require(path.join(__dirname, "../structures/windowHandler.js"));
 
-const hashString = require("../util/hashString.js");
+// const hashString = require("../util/hashString.js");
 
 const userInfoDB = db.create(`${config.app_data_path}/DB`, "User Info");
 
@@ -70,8 +70,7 @@ class SignupWindowHandler extends WindowHandler {
 
             ipcMain.on("signup", (event, data) => {
                 
-                const [salt, hash] = hashString(data.password);
-                const formatted_data = {"username" : data.username, "email" : data.email, "password" : hash, "salt" : salt};
+                const formatted_data = {"username" : data.username, "email" : data.email, "password" : data.password};
 
                 // Handing POST request to api
                 API.request(config.api_gateway_url, "/signup", formatted_data, (success, res) => {

@@ -1,6 +1,6 @@
 //Constants
 const FS = require('fs');
-const DB = "../../DB/";
+const db = "../../db/";
 
 //Main
 module.exports.read = (dir) => {

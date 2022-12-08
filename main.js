@@ -2,7 +2,7 @@
 const path = require("path");
 const url = require("url");
 const fs = require("fs");
-const db = require(path.join(__dirname, "core/DBCore.js"));
+const db = require(path.join(__dirname, "core/dbCore.js"));
 
 const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 
@@ -20,9 +20,9 @@ if (!fs.existsSync(`${config.app_data_path}`)) {
     fs.mkdirSync(`${config.app_data_path}`);
 }
 
-// DB Initialization
-if (!fs.existsSync(`${config.app_data_path}/DB`)) {
-    fs.mkdirSync(`${config.app_data_path}/DB`);
+// db Initialization
+if (!fs.existsSync(`${config.app_data_path}/db`)) {
+    fs.mkdirSync(`${config.app_data_path}/db`);
 }
 
 // Functions

@@ -2,7 +2,7 @@
 const path = require("path");
 const url = require("url");
 const fs = require("fs");
-const db = require(path.join(__dirname, "../DBCore.js"));
+const db = require(path.join(__dirname, "../dbCore.js"));
 
 const API = require(path.join(__dirname, "../APICore.js"));
 const config = require(path.join(__dirname, "../config.js"));
@@ -14,7 +14,7 @@ const WindowHandler = require(path.join(__dirname, "../structures/windowHandler.
 
 // const hashString = require("../util/hashString.js");
 
-const userInfoDB = db.create(`${config.app_data_path}/DB`, "User Info");
+const userInfodb = db.create(`${config.app_data_path}/db`, "userInfo");
 
 // Functions
 class SignupWindowHandler extends WindowHandler {
@@ -78,7 +78,7 @@ class SignupWindowHandler extends WindowHandler {
                     if (success) {
                         console.log(res.token);
 
-                        db.set(userInfoDB, "token", res.token);
+                        db.set(userInfodb, "token", res.token);
                     } else {
                         console.log(res.error);
                     }

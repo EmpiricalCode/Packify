@@ -32,17 +32,20 @@ function request(host, path, data, callback) {
   
       res.on("end", () => {
         if (!timedOut) {
-          try {
-            const data = JSON.parse(response_data);
 
-            if (data.error) {
-              callback(false, data);
-            } else {
-              callback(true, data);
-            }
-            
+          var err = false;
+          let data;
+
+          try {
+            data = JSON.parse(response_data);
           } catch {
             callback(false, {"error" : "Invalid JSON data was provided"});
+          }
+
+          if (data.error) {
+            callback(false, data);
+          } else {
+            callback(true, data);
           }
         }
       })

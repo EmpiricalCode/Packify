@@ -9,14 +9,6 @@ var loadingIcon = document.getElementById("loading-icon");
 var canSignup = true;
 
 // Functions
-function submitHoverOver() {
-    signupButton.classList.add("submit-hover");
-}
-
-function submitHoverOut() {
-    signupButton.classList.remove("submit-hover");
-}
-
 function login() {
     window.system.promptLogin();
 }

@@ -25,8 +25,10 @@ class SignupWindowHandler extends WindowHandler {
 
         if (!this.window) {
 
-            // Spawn window
-            this.window = WindowHandler.spawnWindow(path.join(__dirname, "../../public/html/signup.html"), {
+            // Spawning window
+            this.path = path.join(__dirname, "../../public/html/signup.html");
+
+            this.options = {
                 width: 310, 
                 height: 500,
                 frame: false,
@@ -34,27 +36,11 @@ class SignupWindowHandler extends WindowHandler {
                     preload: path.join(__dirname, "../preloaders/signupPreload.js"),
                 },
                 show: false,
-            });
+            }
+
+            super.spawn(this.path, this.options);
 
             this.window.setResizable(false);
-
-            // Handle window open
-            this.window.once("ready-to-show", () => {
-                setTimeout(() => {
-                    this.window.show();
-                }, 1000);
-            })
-
-            // Handle window closed
-            this.window.once("closed", () => {
-
-                // Removing all communication listeners once the window is closed
-                this.channels.forEach((channel) => {
-                    ipcMain.removeAllListeners(channel);
-                });
-
-                this.window = undefined;
-            })
 
             // Handle Communication
             // Preventing spamming the login-prompt button

@@ -8,11 +8,8 @@ const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 class WindowHandler {
 
     static window;
+    static channels = [];
     static registered_windows = [];
-
-    static spawn() {
-        console.log("No spawn method was initilized");
-    }
 
     static getWindow() {
         return this.window;
@@ -29,6 +26,30 @@ class WindowHandler {
         }))
 
         return window;
+    }
+
+    static spawn(path, options) {
+
+        this.window = this.spawnWindow(path, options);
+
+        // Handle window open
+        this.window.once("ready-to-show", () => {
+
+            setTimeout(() => {
+                this.window.show();
+            }, 1000);
+        })
+
+        // Handle window closed
+        this.window.once("closed", () => {
+
+            // Removing all communication listeners once the window is closed
+            this.channels.forEach((channel) => {
+                ipcMain.removeAllListeners(channel);
+            });
+
+            this.window = undefined;
+        })
     }
 }
 module.exports = WindowHandler;

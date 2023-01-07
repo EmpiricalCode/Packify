@@ -2,7 +2,9 @@
 const path = require("path");
 const url = require("url");
 const fs = require("fs");
+const db = require(path.join(__dirname, "../dbCore.js"));
 
+const API = require(path.join(__dirname, "../APICore.js"));
 const config = require(path.join(__dirname, "../config.js"));
 
 const {app, BrowserWindow, dialog, protocol, ipcMain, ipcRenderer} = require("electron");
@@ -10,15 +12,23 @@ const {app, BrowserWindow, dialog, protocol, ipcMain, ipcRenderer} = require("el
 const WindowController = require(path.join(__dirname, "../windows/windowController.js"));
 const WindowHandler = require(path.join(__dirname, "../structures/windowHandler.js"));
 
+const userInfodb = db.create(`${config.app_data_path}/db`, "userInfo");
+
 // Functions
 class LoginWindowHandler extends WindowHandler {
 
+    static channels = [
+        "login"
+    ];
+    
     static spawn() {
 
         if (!this.window) {
 
-            // Spawn window
-            this.window = WindowHandler.spawnWindow(path.join(__dirname, "../../public/html/login.html"), {
+            // Spawning window
+            this.path = path.join(__dirname, "../../public/html/login.html");
+
+            this.options = {
                 width: 310, 
                 height: 440,
                 frame: false,
@@ -26,22 +36,11 @@ class LoginWindowHandler extends WindowHandler {
                     preload: path.join(__dirname, "../preloaders/loginPreload.js"),
                 },
                 show: false,
-            });
+            }
+
+            super.spawn(this.path, this.options);
 
             this.window.setResizable(false);
-
-            // Handle window open
-            this.window.once("ready-to-show", () => {
-
-                setTimeout(() => {
-                    this.window.show();
-                }, 1000);
-            })
-
-            // Handle window closed
-            this.window.once("closed", () => {
-                this.window = undefined;
-            })
 
             // Handle Communication
             // Preventing spamming the signup-prompt button
@@ -54,11 +53,21 @@ class LoginWindowHandler extends WindowHandler {
             }, 100);
 
             ipcMain.on("login", (event, data) => {
-                console.log(data.username + " " + data.password);
+                
+                const formatted_data = {"username" : data.username, "password" : data.password};
 
-                setTimeout(() => {
+                API.request(config.api_gateway_url, "/login", formatted_data, (success, res) => {
+
+                    if (success) {
+                        console.log(res.token);
+
+                        db.set(userInfodb, "token", res.token);
+                    } else {
+                        console.log(res.error);
+                    }
+
                     this.window.webContents.send("login-finished", {});
-                }, 3000);
+                });
             })
 
         } else {

@@ -14,6 +14,5 @@ module.exports = {
     "name" : "packify",
     "scheme" : "packify",
     "api_gateway_url" : "Packify-API-Gateway.empiricalcode.repl.co",
-
     "app_data_path" : app_data_path
 }

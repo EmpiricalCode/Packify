@@ -6,9 +6,6 @@ const db = require(path.join(__dirname, "core/dbCore.js"));
 
 const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 
-const mainWindowHandler = require(path.join(__dirname, "core/windows/mainWindowHandler.js"));
-const downloadWindowHandler = require(path.join(__dirname, "core/windows/downloadWindowHandler.js"));
-const loadingWindowHandler = require(path.join(__dirname, "core/windows/loadingWindowHandler.js"));
 const config = require(path.join(__dirname, "core/config.js"));
 
 // This needs to be done because there is a bug where
@@ -24,6 +21,11 @@ if (!fs.existsSync(`${config.app_data_path}`)) {
 if (!fs.existsSync(`${config.app_data_path}/db`)) {
     fs.mkdirSync(`${config.app_data_path}/db`);
 }
+
+// Window initialization
+const mainWindowHandler = require(path.join(__dirname, "core/windows/mainWindowHandler.js"));
+const downloadWindowHandler = require(path.join(__dirname, "core/windows/downloadWindowHandler.js"));
+const loadingWindowHandler = require(path.join(__dirname, "core/windows/loadingWindowHandler.js"));
 
 // Functions
 function getDeepUrl(argv) {

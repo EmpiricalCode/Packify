@@ -54,7 +54,7 @@ class LoadingWindowHandler extends WindowHandler {
                     
                     API.request(config.api_gateway_url, "/authenticate", {"token" : userInfoData.token}, (success, res) => {
 
-                        if (success) {
+                        if (res.verified) {
                             WindowController.spawnWindow("MainWindowHandler");
                         } else {
                             WindowController.spawnWindow("LoginWindowHandler");

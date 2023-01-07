@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="../css/common.css">
     </head>
     <body>
-        <img src="../assets/logo.png" class="hidden" id="logo">
+        <img src="../assets/logo.png" id="logo">
 
         <div id="login-form">
                 <img class="input-icon" id="avatar-icon" src="../assets/avatar-icon.png">
@@ -18,7 +18,7 @@
 
                 <p id="signup-prompt">Or <a href="#" onclick="signup()">Sign Up</a></p>
                 <div class="divider"></div>
-            <button id="submit">Login</button>
+            <button id="submit" onclick="login()"><img id="loading-icon" class="hidden" src="../assets/loading-icon.png">Login</button>
         </div>
         
         <script src="../js/login.js"></script>

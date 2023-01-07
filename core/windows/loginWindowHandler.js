@@ -5,7 +5,7 @@ const fs = require("fs");
 
 const config = require(path.join(__dirname, "../config.js"));
 
-const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
+const {app, BrowserWindow, dialog, protocol, ipcMain, ipcRenderer} = require("electron");
 
 const WindowController = require(path.join(__dirname, "../windows/windowController.js"));
 const WindowHandler = require(path.join(__dirname, "../structures/windowHandler.js"));
@@ -52,6 +52,14 @@ class LoginWindowHandler extends WindowHandler {
                     this.window.close();
                 })
             }, 100);
+
+            ipcMain.on("login", (event, data) => {
+                console.log(data.username + " " + data.password);
+
+                setTimeout(() => {
+                    this.window.webContents.send("login-finished", {});
+                }, 3000);
+            })
 
         } else {
             this.window.focus();

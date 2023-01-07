@@ -11,11 +11,6 @@ input:focus {
     border: 1px solid rgb(200, 200, 200);
 }
 
-button {
-    background: rgb(88, 143, 88);
-    border: 2px solid rgb(88, 143, 88);
-}
-
 /* Classes */
 .subtitle {
     font-weight: 500;
@@ -137,14 +132,4 @@ button {
 
     cursor: pointer;
     transition: 0.5s;
-}
-
-/* Webkit */
-@-webkit-keyframes rotating {
-    from{
-        -webkit-transform: rotate(0deg);
-    }
-    to{
-        -webkit-transform: rotate(360deg);
-    }
 }

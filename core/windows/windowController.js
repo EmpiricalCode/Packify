@@ -7,9 +7,6 @@ const config = JSON.parse(fs.readFileSync(path.join(__dirname, "../../package.js
 
 const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
 
-// Let statments
-let window;
-
 // Functions
 class WindowController {
 

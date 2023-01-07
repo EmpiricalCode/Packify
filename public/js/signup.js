@@ -6,16 +6,18 @@ var signupButton = document.getElementById("submit");
 var loadingIcon = document.getElementById("loading-icon");
 
 // Variables
-var canSignup = true;
+var processingSignup = false;
 
 // Functions
 function login() {
-    window.system.promptLogin();
+    if (!processingSignup) {
+        window.system.promptLogin();
+    }
 }
 
 function signup() {
-    if (canSignup) {
-        canSignup = false;
+    if (!processingSignup) {
+        processingSignup = true;
 
         const data = {"email" : emailField.value, "username" : usernameField.value, "password" : passwordField.value};
 
@@ -35,7 +37,7 @@ function signup() {
             loadingIcon.classList.add("hidden");
             loadingIcon.classList.remove("visible"); 
 
-            canSignup = true;
+            processingSignup = false;
         })
     }
 }

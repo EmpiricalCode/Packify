@@ -5,18 +5,20 @@ var passwordField = document.getElementById("password-field");
 var loadingIcon = document.getElementById("loading-icon");
 var loginButton = document.getElementById("submit");
 
-var canLogin = true;
+var processingLogin = false;
 
 // Functions
 function signup() {
-    window.system.promptSignUp();
+    if (!processingLogin) {
+        window.system.promptSignUp();
+    }
 }
 
 function login() {
 
-    if (canLogin) {
+    if (!processingLogin) {
 
-        canLogin = false;
+        processingLogin = true;
 
         window.system.login(usernameField.value, passwordField.value);
 
@@ -28,13 +30,13 @@ function login() {
 
         window.system.loginFinished((data) => {
 
-            canLogin = true;
-
             loginButton.classList.remove("submit-pressed");
             loginButton.style.pointerEvents = "auto";
 
             loadingIcon.classList.remove("visible");
             loadingIcon.classList.add("hidden");
+
+            processingLogin = false;
         })
     }
 }

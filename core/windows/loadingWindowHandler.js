@@ -4,6 +4,7 @@ const url = require("url");
 const fs = require("fs");
 const db = require(path.join(__dirname, "../dbCore.js"));
 
+const API = require(path.join(__dirname, "../APICore.js"));
 const config = require(path.join(__dirname, "../config.js"));
 
 const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
@@ -48,15 +49,20 @@ class LoadingWindowHandler extends WindowHandler {
                 this.window.hide();
                 
                 setTimeout(() => {
-                    
-                    const userInfoData = db.read(userInfodb);
 
-                    if (userInfoData.token) {
-                        WindowController.spawnWindow("MainWindowHandler");
-                    } else {
-                        WindowController.spawnWindow("LoginWindowHandler");
-                    }
-                    this.window.close();
+                    const userInfoData = db.read(userInfodb);
+                    
+                    API.request(config.api_gateway_url, "/authenticate", {"token" : userInfoData.token}, (success, res) => {
+
+                        if (success) {
+                            WindowController.spawnWindow("MainWindowHandler");
+                        } else {
+                            WindowController.spawnWindow("LoginWindowHandler");
+                        }
+
+                        this.window.close();
+                    });
+
                 }, 1000);
             }, 10000);
 

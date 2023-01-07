@@ -47,11 +47,11 @@ module.exports.create = (dir, name) => {
   return `${dir}/${name}.json`;
 }
 
-module.exports.remove = (dir, name) => {
+module.exports.remove = (dir, key) => {
   var rawdata = FS.readFileSync(dir);
   var data = JSON.parse(rawdata);
 
-  delete data[name];
+  delete data[key];
 
   data = JSON.stringify(data);
 

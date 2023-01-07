@@ -63,6 +63,13 @@ class SignupWindowHandler extends WindowHandler {
                         console.log(res.token);
 
                         db.set(userInfodb, "token", res.token);
+
+                        this.window.hide();
+
+                        setTimeout(() => {
+                            WindowController.spawnWindow("MainWindowHandler");    
+                            this.window.close();
+                        }, 1000);
                     } else {
                         console.log(res.error);
                     }

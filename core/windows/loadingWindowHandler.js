@@ -57,6 +57,7 @@ class LoadingWindowHandler extends WindowHandler {
                         if (res.verified) {
                             WindowController.spawnWindow("MainWindowHandler");
                         } else {
+                            db.remove(userInfodb, "token");
                             WindowController.spawnWindow("LoginWindowHandler");
                         }
 

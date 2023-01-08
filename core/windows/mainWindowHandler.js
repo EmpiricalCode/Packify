@@ -38,6 +38,7 @@ class MainWindowHandler extends WindowHandler {
 
             // handle window open
             this.window.once("ready-to-show", () => {
+                this.window.openDevTools();
                 this.window.show();
             })
 
@@ -46,6 +47,22 @@ class MainWindowHandler extends WindowHandler {
                 return new Promise((resolve, reject) => {
                     resolve(config.version);
                 })
+            })
+
+            ipcMain.on("close",  (event, args) => {
+                this.window.close();
+            })
+
+            ipcMain.on("resize",  (event, maximize) => {
+                if (maximize) {
+                    this.window.maximize();
+                } else {
+                    this.window.unmaximize();
+                }
+            })
+            
+            ipcMain.on("minimize",  (event, args) => {
+                this.window.minimize();
             })
 
         } else {

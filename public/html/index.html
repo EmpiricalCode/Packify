@@ -6,11 +6,16 @@
     </head>
     <body>
         <div id="app-menu-bar">
-                
+            <button id="app-close-button" onclick="closeWindow()" class="app-menu-bar-button" style="background-image: url(../assets/images/close-icon.png);"></button>
+            <button id="app-resize-button" onclick="resize()" class="app-menu-bar-button" style="background-image: url(../assets/images/maximize-icon.png);"></button>
+            <button id="app-minimize-button" onclick="minimize()" class="app-menu-bar-button" style="background-image: url(../assets/images/minimize-icon.png);"></button>
         </div>
         <div id="body-container">
-            <div id="menu-bar"></div>
-            <script src="../js/index.js"></script>
+            <div id="menu-bar">
+                
+            </div>
         </div>
+
+        <script src="../js/index.js"></script>
     </body>
 </html>

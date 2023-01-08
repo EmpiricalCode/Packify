@@ -1,15 +1,15 @@
 /* Font Face */
 @font-face {
     font-family: "Gotham";
-    src: url("../assets/gothambook.woff") format("woff");
+    src: url("../assets/fonts/gothambook.woff") format("woff");
 }
 
 @font-face {
     font-family: "Gotham Medium";
-    src: url("../assets/gothammedium.woff") format("woff");
+    src: url("../assets/fonts/gothammedium.woff") format("woff");
 }
 
 @font-face {
     font-family: "Gotham Bold";
-    src: url("../assets/gothambold.woff") format("woff");
+    src: url("../assets/fonts/gothambold.woff") format("woff");
 }

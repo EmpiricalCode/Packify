@@ -52,12 +52,14 @@ class LoadingWindowHandler extends WindowHandler {
                     
                     API.request(config.api_gateway_url, "/authenticate", {"token" : userInfoData.token}, (success, res) => {
 
-                        if (success) {
+                        // Diffrentiating between server error (like 502, 404) and a server-initiated error
+                        // (Basically, whether the server is online and functioning properly or not)
+                        if (!res.serverError) {
 
                             this.window.hide();
     
                             setTimeout(() => {
-                                
+
                                 if (res.verified) {
                                     WindowController.spawnWindow("MainWindowHandler");
                                 } else {
@@ -67,6 +69,9 @@ class LoadingWindowHandler extends WindowHandler {
 
                                 this.window.close();
                             }, 1000);
+
+                        } else {
+                            // TODO: Handle server error
                         }
                     });
 

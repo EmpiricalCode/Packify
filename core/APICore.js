@@ -54,7 +54,7 @@ function request(host, path, data, callback) {
     } else {
       
       if (!timedOut) {
-        callback(false, {"error" : `Request recieved status: ${res.statusCode}`});
+        callback(false, {"error" : `Request recieved status: ${res.statusCode}`, "serverError" : true});
       }
     }
   })
@@ -73,7 +73,7 @@ function request(host, path, data, callback) {
     timedOut = true;
     req.end();
     
-    callback(false, {"error" : "Request timed out (no response)"});
+    callback(false, {"error" : "Request timed out (no response)", "serverError" : true});
   });
 
   req.end();

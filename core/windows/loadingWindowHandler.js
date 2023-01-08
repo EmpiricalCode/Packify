@@ -44,28 +44,31 @@ class LoadingWindowHandler extends WindowHandler {
             this.window.setResizable(false);
 
             // Process loading
-            setTimeout(() => {
+            this.window.once("ready-to-show", () => {
 
-                this.window.hide();
-                
                 setTimeout(() => {
-
-                    const userInfoData = db.read(userInfodb);
                     
-                    API.request(config.api_gateway_url, "/authenticate", {"token" : userInfoData.token}, (success, res) => {
+                    setTimeout(() => {
 
-                        if (res.verified) {
-                            WindowController.spawnWindow("MainWindowHandler");
-                        } else {
-                            db.remove(userInfodb, "token");
-                            WindowController.spawnWindow("LoginWindowHandler");
-                        }
+                        const userInfoData = db.read(userInfodb);
 
-                        this.window.close();
-                    });
+                        this.window.hide();
+                        
+                        API.request(config.api_gateway_url, "/authenticate", {"token" : userInfoData.token}, (success, res) => {
 
-                }, 1000);
-            }, 10000);
+                            if (res.verified) {
+                                WindowController.spawnWindow("MainWindowHandler");
+                            } else {
+                                db.remove(userInfodb, "token");
+                                WindowController.spawnWindow("LoginWindowHandler");
+                            }
+
+                            this.window.close();
+                        });
+
+                    }, 1000);
+                }, 5000);
+            });
 
         } else {
             this.window.focus();

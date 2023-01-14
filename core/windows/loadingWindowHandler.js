@@ -2,7 +2,7 @@
 const path = require("path");
 const url = require("url");
 const fs = require("fs");
-const db = require(path.join(__dirname, "../dbCore.js"));
+const db = require(path.join(__dirname, "../DBCore.js"));
 
 const API = require(path.join(__dirname, "../APICore.js"));
 const config = require(path.join(__dirname, "../config.js"));
@@ -61,10 +61,10 @@ class LoadingWindowHandler extends WindowHandler {
                             setTimeout(() => {
 
                                 if (res.verified) {
-                                    WindowController.spawnWindow("MainWindowHandler");
+                                    WindowController.spawnWindow("mainWindowHandler");
                                 } else {
                                     db.remove(userInfodb, "token");
-                                    WindowController.spawnWindow("LoginWindowHandler");
+                                    WindowController.spawnWindow("loginWindowHandler");
                                 }
 
                                 this.window.close();

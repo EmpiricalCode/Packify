@@ -2,15 +2,15 @@
 const path = require("path");
 const url = require("url");
 const fs = require("fs");
-const db = require(path.join(__dirname, "core/dbCore.js"));
 
 const {app, BrowserWindow, dialog, protocol, ipcMain} = require("electron");
-
-const config = require(path.join(__dirname, "core/config.js"));
-
+ 
 // This needs to be done because there is a bug where
 // when the app is launched from a deep link, the cwd will be System32 (and we don't have permissions there)
 process.chdir(path.resolve(__dirname, "../"));
+
+const db = require(path.join(__dirname, "core/DBCore.js"));
+const config = require(path.join(__dirname, "core/config.js"));
 
 // App data Initialization
 if (!fs.existsSync(`${config.app_data_path}`)) {

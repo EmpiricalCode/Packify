@@ -2,7 +2,7 @@
 const path = require("path");
 const url = require("url");
 const fs = require("fs");
-const db = require(path.join(__dirname, "../dbCore.js"));
+const db = require(path.join(__dirname, "../DBCore.js"));
 
 const API = require(path.join(__dirname, "../APICore.js"));
 const config = require(path.join(__dirname, "../config.js"));
@@ -47,7 +47,7 @@ class LoginWindowHandler extends WindowHandler {
             setTimeout(() => {
                 ipcMain.once("prompt-signup", () => {
 
-                    WindowController.spawnWindow("SignupWindowHandler");
+                    WindowController.spawnWindow("signupWindowHandler");
                     this.window.close();
                 })
             }, 100);
@@ -66,7 +66,7 @@ class LoginWindowHandler extends WindowHandler {
                         this.window.hide();
 
                         setTimeout(() => {
-                            WindowController.spawnWindow("MainWindowHandler");    
+                            WindowController.spawnWindow("mainWindowHandler");    
                             this.window.close();
                         }, 1000);
                     } else {

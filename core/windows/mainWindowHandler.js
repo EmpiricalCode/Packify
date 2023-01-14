@@ -24,6 +24,8 @@ class MainWindowHandler extends WindowHandler {
             this.window = WindowHandler.spawnWindow(path.join(__dirname, "../../public/html/index.html"), {
                 width: 800, 
                 height: 600,
+                minWidth: 400,
+                minHeight: 400,
                 frame: false,
                 webPreferences : {
                     preload: path.join(__dirname, "../preloaders/mainPreload.js"),
@@ -38,7 +40,6 @@ class MainWindowHandler extends WindowHandler {
 
             // handle window open
             this.window.once("ready-to-show", () => {
-                this.window.openDevTools();
                 this.window.show();
             })
 

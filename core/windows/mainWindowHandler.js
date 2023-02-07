@@ -41,6 +41,7 @@ class MainWindowHandler extends WindowHandler {
             // handle window open
             this.window.once("ready-to-show", () => {
                 this.window.show();
+                this.window.webContents.toggleDevTools();
             })
 
             // Communication

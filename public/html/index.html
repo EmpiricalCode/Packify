@@ -6,14 +6,20 @@
     </head>
     <body>
         <div id="app-menu-bar">
+            <div style="position: fixed; left: 0px; width: 80px; height: 27px; background-color: rgb(22, 22, 22);"></div>
             <button id="app-close-button" onclick="closeWindow()" class="app-menu-bar-button" style="background-image: url(../assets/images/close-icon.png);"></button>
             <button id="app-resize-button" onclick="resize()" class="app-menu-bar-button" style="background-image: url(../assets/images/maximize-icon.png);"></button>
             <button id="app-minimize-button" onclick="minimize()" class="app-menu-bar-button" style="background-image: url(../assets/images/minimize-icon.png);"></button>
         </div>
         <div id="body-container">
             <div id="menu-bar">
-                
+                <div style="width: 100%; height: 100px"></div>
+                <button class="menu-bar-button" style="background-image: url('../assets/images/migrated/home-icon.png')"><div class="menu-bar-button-notch"></div></button>
+                <button class="menu-bar-button" style="background-image: url('../assets/images/migrated/folder-icon.png')"><div class="menu-bar-button-notch"></div></button>
+                <button class="menu-bar-button" style="background-image: url('../assets/images/migrated/settings-icon.png')"><div class="menu-bar-button-notch"></div></button>
             </div>
+            <div id="main-divider"></div>
+            <div id="content-container"></div>
         </div>
 
         <script src="../js/index.js"></script>

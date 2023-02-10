@@ -25,20 +25,20 @@ class DownloadWindowHandler extends WindowHandler {
         // Setting up the download window
         if (!this.window) {
 
-            this.window = WindowHandler.spawnWindow(path.join(__dirname, "../../public/html/download.html"), {
+            // Spawning window
+            this.path = path.join(__dirname, "../../public/html/download.html");
+
+            this.options = {
                 width: 800, 
                 height: 600,
                 webPreferences : {
-                    preload: path.join(__dirname, "../preloaders/downloadPreload.js")
+                    preload: path.join(__dirname, "../preloaders/downloadPreload.js"),
                 },
-            });
+            }
 
-            this.window.on("closed", () => {
-                this.window = undefined;
-            })
+            super.spawn(this.path, this.options);
 
-            this.window.once("ready-to-show", () => {
-                this.window.webContents.toggleDevTools();
+            this.window.on("ready-to-show", () => {
                 this.spawnDownloadProcess(args);
             })
 

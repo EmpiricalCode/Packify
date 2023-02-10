@@ -21,7 +21,10 @@ class MainWindowHandler extends WindowHandler {
 
         if (!this.window) {
 
-            this.window = WindowHandler.spawnWindow(path.join(__dirname, "../../public/html/index.html"), {
+            // Spawning window
+            this.path = path.join(__dirname, "../../public/html/index.html");
+            
+            this.options = {
                 width: 800, 
                 height: 600,
                 minWidth: 400,
@@ -31,19 +34,10 @@ class MainWindowHandler extends WindowHandler {
                     preload: path.join(__dirname, "../preloaders/mainPreload.js"),
                 },
                 show: false,
-            })
+            };
 
-            // Handle window closed
-            this.window.on("closed", () => {
-                this.window = undefined;
-            })
-
-            // handle window open
-            this.window.once("ready-to-show", () => {
-                this.window.show();
-                this.window.webContents.toggleDevTools();
-            })
-
+            super.spawn(this.path, this.options);
+            
             // Communication
             ipcMain.handle("request-app-version", async (event, args) => {
                 return new Promise((resolve, reject) => {

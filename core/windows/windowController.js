@@ -12,7 +12,7 @@ class WindowController {
 
     // Use this spawn function inside windowHandler classes to avoid circular imports
     static spawnWindow(name, ...args) {
-        require(path.join(__dirname, `../windows/${name}.js`)).spawn(...args);
+        return require(path.join(__dirname, `../windows/${name}.js`)).spawn(...args);
     }
 
     static closeWindow(name) {

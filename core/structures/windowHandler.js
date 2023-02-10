@@ -34,10 +34,7 @@ class WindowHandler {
 
         // Handle window open
         this.window.once("ready-to-show", () => {
-
-            setTimeout(() => {
-                this.window.show();
-            }, 1000);
+            this.window.show();
         })
 
         // Handle window closed

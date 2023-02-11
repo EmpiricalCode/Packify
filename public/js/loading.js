@@ -11,4 +11,4 @@ setTimeout(() => {
 
     logo.classList.remove("hidden");
     loadingIcon.classList.remove("hidden");
-}, 2000);
+}, 500);

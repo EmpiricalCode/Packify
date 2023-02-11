@@ -107,7 +107,7 @@ p {
 #content-container {
     width: calc(100% - 160px);
     height: calc(100% - 60px);
-    background: linear-gradient(180deg, rgba(22,22,22,1) 0%, rgba(25,25,25,1) 32%);
+    background: linear-gradient(180deg, rgba(22, 22, 22, 1) 0%, rgba(26, 26, 26,1) 40%);
     padding: 20px 40px 40px 40px;
 }
 

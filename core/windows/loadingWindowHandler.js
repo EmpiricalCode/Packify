@@ -48,34 +48,45 @@ class LoadingWindowHandler extends WindowHandler {
 
                 setTimeout(() => {
 
+                    var authenticationSuccessful = false;
                     const userInfoData = db.read(userInfodb);
-                    
-                    API.request(config.api_gateway_url, "/authenticate", {"token" : userInfoData.token}, (success, res) => {
 
-                        // Diffrentiating between server error (like 502, 404) and a server-initiated error
-                        // (Basically, whether the server is online and functioning properly or not)
-                        if (!res.serverError) {
+                    (async() => {
 
-                            this.window.hide();
-    
-                            setTimeout(() => {
+                        while (!authenticationSuccessful) {
+                            
+                            authenticationSuccessful = await new Promise((resolve, reject) => {
+                                API.request(config.api_gateway_url, "/authenticate", {"token" : userInfoData.token}, (success, res) => {
 
-                                if (res.verified) {
-                                    WindowController.spawnWindow("mainWindowHandler");
-                                } else {
-                                    db.remove(userInfodb, "token");
-                                    WindowController.spawnWindow("loginWindowHandler");
-                                }
+                                    // Diffrentiating between server error (like 502, 404) and a server-initiated error
+                                    // (Basically, whether the server is online and functioning properly or not)
+                                    if (!res.serverError) {
 
-                                this.window.close();
-                            }, 1000);
+                                        this.window.hide();
+                
+                                        setTimeout(() => {
 
-                        } else {
-                            // TODO: Handle server error
-                            console.log("Authentication Error");
+                                            if (res.verified) {
+                                                WindowController.spawnWindow("mainWindowHandler");
+                                            } else {
+                                                db.remove(userInfodb, "token");
+                                                WindowController.spawnWindow("loginWindowHandler");
+                                            }
+
+                                            this.window.close();   
+                                            resolve(true); 
+                                        }, 1000);
+
+                                    } else {
+                                        // TODO: Handle server error
+                                        console.log("Authentication Error");
+                                        resolve(false);
+                                    }
+                                });
+                            });
                         }
-                    });
-
+                    })();
+                        
                 }, 5000);
             });
 

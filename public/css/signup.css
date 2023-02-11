@@ -11,6 +11,19 @@ input:focus {
     border: 1px solid rgb(200, 200, 200);
 }
 
+button {
+    color: white;
+    font-size: 14px;
+    font-family: "Gotham", Tahoma, Geneva, Verdana, sans-serif;
+    background: rgb(88, 143, 88);
+    border: 2px solid rgb(88, 143, 88);
+}
+
+button:hover {
+    border: 2px solid rgb(148, 189, 148);
+    background: rgb(148, 189, 148);
+}
+
 /* Classes */
 .subtitle {
     font-weight: 500;

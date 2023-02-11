@@ -37,6 +37,11 @@ class MainWindowHandler extends WindowHandler {
             };
 
             super.spawn(this.path, this.options);
+
+            // Initialization
+            this.window.once("ready-to-show", () => {
+                this.window.webContents.toggleDevTools();
+            })
             
             // Communication
             ipcMain.handle("request-app-version", async (event, args) => {

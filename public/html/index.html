@@ -15,11 +15,11 @@
             <div id="sidebar-container">
                 <div style="width: 100%; height: 100px"></div>
                 <div id="menu-bar">
-                    <button class="menu-bar-button" style="background-image: url('../assets/images/migrated/home-icon.png')"><div class="menu-bar-button-notch"></div></button>
-                    <button class="menu-bar-button" style="background-image: url('../assets/images/migrated/folder-icon.png')"><div class="menu-bar-button-notch"></div></button>
-                    <button class="menu-bar-button" style="background-image: url('../assets/images/migrated/download-icon.png')"><div class="menu-bar-button-notch"></div></button>
-                    <button class="menu-bar-button" style="background-image: url('../assets/images/migrated/inbox-icon.png')"><div class="menu-bar-button-notch"></div></button>
-                    <button class="menu-bar-button" style="background-image: url('../assets/images/migrated/settings-icon.png')"><div class="menu-bar-button-notch"></div></button>
+                    <button id="home-button" onclick="switchWindows('home');" class="menu-bar-button" style="background-image: url('../assets/images/migrated/home-icon.png')"><div class="menu-bar-button-notch"></div></button>
+                    <button id="files-button" onclick="switchWindows('files');" class="menu-bar-button" style="background-image: url('../assets/images/migrated/folder-icon.png')"><div class="menu-bar-button-notch"></div></button>
+                    <button id="downloads-button" onclick="switchWindows('downloads');" class="menu-bar-button" style="background-image: url('../assets/images/migrated/download-icon.png')"><div class="menu-bar-button-notch"></div></button>
+                    <button id="inbox-button" onclick="switchWindows('inbox');" class="menu-bar-button" style="background-image: url('../assets/images/migrated/inbox-icon.png')"><div class="menu-bar-button-notch"></div></button>
+                    <button id="settings-button" onclick="switchWindows('settings');" class="menu-bar-button" style="background-image: url('../assets/images/migrated/settings-icon.png')"><div class="menu-bar-button-notch"></div></button>
                 </div>
             </div>
             <div id="content-container"></div>

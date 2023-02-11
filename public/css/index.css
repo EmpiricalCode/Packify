@@ -44,20 +44,20 @@ p {
 }
 
 .menu-bar-button-notch {
-    width: 2px;
+    width: 1px;
     height: 100%;
     background-color: white;
     opacity: 0;
     transition: 0.3s;
 }
 
-.menu-bar-button:hover > .menu-bar-button-notch {
-    opacity: 1;
-}
-
-.menu-bar-button:hover {
+.menu-bar-button-active, .menu-bar-button:hover {
     background-color: rgb(31, 31, 31);
     cursor: pointer;
+}
+
+.menu-bar-button-notch-active {
+    opacity: 1;
 }
 
 /* IDs */

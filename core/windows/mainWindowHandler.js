@@ -25,8 +25,8 @@ class MainWindowHandler extends WindowHandler {
             this.path = path.join(__dirname, "../../public/html/index.html");
             
             this.options = {
-                width: 800, 
-                height: 600,
+                width: 900, 
+                height: 700,
                 minWidth: 400,
                 minHeight: 400,
                 frame: false,

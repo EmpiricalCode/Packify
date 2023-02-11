@@ -13,3 +13,23 @@
     font-family: "Gotham Bold";
     src: url("../assets/fonts/gothambold.woff") format("woff");
 }
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("../assets/fonts/Montserrat-Regular.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Montserrat Light";
+    src: url("../assets/fonts/Montserrat-Light.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Montserrat ExtraLight";
+    src: url("../assets/fonts/Montserrat-ExtraLight.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Montserrat Medium";
+    src: url("../assets/fonts/Montserrat-Medium.woff") format("woff");
+}

@@ -23,7 +23,7 @@ function closeWindow() {
     window.system.close();
 }
 
-function switchWindows(name) {
+function switchTabs(name) {
     for (var button of menuBarButtons) {
         if (button.id.split("-")[0] == name) {
             button.querySelector(".menu-bar-button-notch").classList.add("menu-bar-button-notch-active");
@@ -36,5 +36,5 @@ function switchWindows(name) {
 }
 
 setTimeout(() => {
-    switchWindows("home");
+    switchTabs("home");
 }, 200);

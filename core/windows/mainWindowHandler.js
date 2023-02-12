@@ -42,6 +42,14 @@ class MainWindowHandler extends WindowHandler {
             this.window.once("ready-to-show", () => {
                 this.window.webContents.toggleDevTools();
             })
+
+            this.window.on("maximize", () => {
+                this.window.webContents.send("resize", {});
+            })
+
+            this.window.on("unmaximize", () => {
+                this.window.webContents.send("resize", {});
+            })
             
             // Communication
             ipcMain.handle("request-app-version", async (event, args) => {

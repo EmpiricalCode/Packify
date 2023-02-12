@@ -13,6 +13,12 @@ contextBridge.exposeInMainWorld("system", {
         ipcRenderer.send("resize", maximize)
     },
 
+    onResize: (callback) => {
+        return ipcRenderer.on("resize", () => {
+            callback();
+        })
+    },
+
     close: () => {
         ipcRenderer.send("close", {});
     }

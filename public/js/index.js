@@ -2,6 +2,9 @@
 var maximized = false;
 var appResizeButton = document.getElementById("app-resize-button");
 var menuBarButtons = document.getElementsByClassName("menu-bar-button");
+var tabs = document.getElementsByClassName("tab-container");
+
+let currTab;
 
 // Functions
 function minimize() {
@@ -10,13 +13,6 @@ function minimize() {
 
 function resize() {
     window.system.resize(!maximized);
-    maximized = !maximized;
-
-    if (!maximized) {
-        appResizeButton.style.backgroundImage = "url(../assets/images/maximize-icon.png)";
-    } else {
-        appResizeButton.style.backgroundImage = "url(../assets/images/windowed-icon.png)";
-    }
 }
 
 function closeWindow() {
@@ -24,6 +20,8 @@ function closeWindow() {
 }
 
 function switchTabs(name) {
+    currTab = name;
+
     for (var button of menuBarButtons) {
         if (button.id.split("-")[0] == name) {
             button.querySelector(".menu-bar-button-notch").classList.add("menu-bar-button-notch-active");
@@ -33,7 +31,31 @@ function switchTabs(name) {
             button.classList.remove("menu-bar-button-active");
         }
     }
+
+    for (var tab of tabs) {
+        if (tab.id.split("-")[0] == name) {
+
+            var t = tab;
+            setTimeout(() => {
+                if (currTab == t.id.split("-")[0]) {
+                    t.classList.add("tab-visible");
+                }
+            }, 200);
+        } else {
+            tab.classList.remove("tab-visible");
+        }
+    }
 }
+
+window.system.onResize(() => {
+    maximized = !maximized;
+
+    if (!maximized) {
+        appResizeButton.style.backgroundImage = "url(../assets/images/maximize-icon.png)";
+    } else {
+        appResizeButton.style.backgroundImage = "url(../assets/images/windowed-icon.png)";
+    }
+})
 
 setTimeout(() => {
     switchTabs("home");

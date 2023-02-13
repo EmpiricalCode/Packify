@@ -5,6 +5,10 @@ contextBridge.exposeInMainWorld("system", {
     
     requestAppVersion: () => ipcRenderer.invoke("request-app-version"),
 
+    requestUserData: () => {
+        return ipcRenderer.invoke("request-user-data");
+    },
+
     minimize: () => {
         ipcRenderer.send("minimize", {})
     },

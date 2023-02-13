@@ -79,8 +79,11 @@ class LoadingWindowHandler extends WindowHandler {
 
                                     } else {
                                         // TODO: Handle server error
-                                        console.log("Authentication Error");
-                                        resolve(false);
+                                        console.log(res.error);
+
+                                        setTimeout(() => {
+                                            resolve(false);
+                                        }, 1000);
                                     }
                                 });
                             });

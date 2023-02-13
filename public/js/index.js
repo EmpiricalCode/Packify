@@ -5,6 +5,7 @@ var menuBarButtons = document.getElementsByClassName("menu-bar-button");
 var tabs = document.getElementsByClassName("tab-container");
 
 let currTab;
+var loaded = false;
 
 // Functions
 function minimize() {
@@ -20,29 +21,31 @@ function closeWindow() {
 }
 
 function switchTabs(name) {
-    currTab = name;
+    if (loaded) {
+        currTab = name;
 
-    for (var button of menuBarButtons) {
-        if (button.id.split("-")[0] == name) {
-            button.querySelector(".menu-bar-button-notch").classList.add("menu-bar-button-notch-active");
-            button.classList.add("menu-bar-button-active");
-        } else {
-            button.querySelector(".menu-bar-button-notch").classList.remove("menu-bar-button-notch-active");
-            button.classList.remove("menu-bar-button-active");
+        for (var button of menuBarButtons) {
+            if (button.id.split("-")[0] == name) {
+                button.querySelector(".menu-bar-button-notch").classList.add("menu-bar-button-notch-active");
+                button.classList.add("menu-bar-button-active");
+            } else {
+                button.querySelector(".menu-bar-button-notch").classList.remove("menu-bar-button-notch-active");
+                button.classList.remove("menu-bar-button-active");
+            }
         }
-    }
 
-    for (var tab of tabs) {
-        if (tab.id.split("-")[0] == name) {
+        for (var tab of tabs) {
+            if (tab.id.split("-")[0] == name) {
 
-            var t = tab;
-            setTimeout(() => {
-                if (currTab == t.id.split("-")[0]) {
-                    t.classList.add("tab-visible");
-                }
-            }, 200);
-        } else {
-            tab.classList.remove("tab-visible");
+                var t = tab;
+                setTimeout(() => {
+                    if (currTab == t.id.split("-")[0]) {
+                        t.classList.add("tab-visible");
+                    }
+                }, 200);
+            } else {
+                tab.classList.remove("tab-visible");
+            }
         }
     }
 }
@@ -57,6 +60,12 @@ window.system.onResize(() => {
     }
 })
 
-setTimeout(() => {
-    switchTabs("home");
-}, 200);
+window.system.requestUserData().then((res) => {
+
+    document.getElementById("dashboard-welcome-message").innerHTML += res.username;
+
+    setTimeout(() => {
+        loaded = true;
+        switchTabs("home");
+    }, 200);
+})

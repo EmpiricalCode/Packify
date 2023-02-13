@@ -54,9 +54,9 @@ class LoginWindowHandler extends WindowHandler {
 
             ipcMain.on("login", (event, data) => {
                 
-                const formatted_data = {"username" : data.username, "password" : data.password};
+                const formattedData = {"username" : data.username, "password" : data.password};
 
-                API.request(config.api_gateway_url, "/login", formatted_data, (success, res) => {
+                API.request(config.api_gateway_url, "/login", formattedData, (success, res) => {
 
                     if (success) {
                         console.log(res.token);

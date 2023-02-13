@@ -54,10 +54,10 @@ class SignupWindowHandler extends WindowHandler {
 
             ipcMain.on("signup", (event, data) => {
                 
-                const formatted_data = {"username" : data.username, "email" : data.email, "password" : data.password};
+                const formattedData = {"username" : data.username, "email" : data.email, "password" : data.password};
 
                 // Handing POST request to api
-                API.request(config.api_gateway_url, "/signup", formatted_data, (success, res) => {
+                API.request(config.api_gateway_url, "/signup", formattedData, (success, res) => {
 
                     if (success) {
                         console.log(res.token);

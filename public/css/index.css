@@ -11,7 +11,7 @@ body {
 
 p {
     color: rgb(197, 197, 197);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Gotham";
 }
 
 /* Classes */
@@ -64,6 +64,8 @@ p {
     position: fixed;
     opacity: 0;
     transition: 0.3s;
+    width: calc(100% - 120px - max(40px, min(5vw, 60px)));
+    height: calc(100% - 60px);
 }
 
 .tab-title {
@@ -75,6 +77,17 @@ p {
 
 .tab-visible {
     opacity: 1;
+}
+
+.update-gridbox {
+    background: #161616;
+    border-radius: 10px;
+    height: min(max(400px, 6vh), 1000px);
+}
+
+.update-subgridbox {
+    background: #161616;
+    border-radius: 10px;
 }
 
 /* IDs */
@@ -114,6 +127,8 @@ p {
 #content-container {
     width: calc(100% - 120px - max(40px, min(5vw, 60px)));
     height: calc(100% - 60px);
+    display: flex;
+    justify-content: center;
     background: linear-gradient(180deg, rgba(22, 22, 22, 1) 0%, rgba(26, 26, 26,1) 40%);
     padding: 20px 40px 40px max(40px, min(5vw, 60px));
 }
@@ -130,4 +145,73 @@ p {
 #dashboard-welcome-message-subtitle {
     font-family: 'Gotham', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
+}
+
+#home-container { 
+    max-width: 1000px;
+}
+
+#update-container {
+    margin-top: 40px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    max-width: 1000px;
+}
+
+#data-used-bar {
+    fill: none;
+    stroke: url(#GradientColor);
+    stroke-width: 20px;
+    stroke-dasharray: 187%;
+    stroke-dashoffset: 187%;
+}
+
+#data-used-bar-background {
+    fill: none;
+    stroke: rgb(17, 17, 17);
+    stroke-width: 20px;
+    stroke-dasharray: 187%;
+}
+
+#data-used-bar-container {
+    position: fixed;
+}
+
+#data-used-subtitle {
+    font-family: "Gotham";
+    padding: 0 30px 0 30px;
+    font-size: 15px;
+    text-align: center;
+}
+
+#data-used-percent {
+    font-size: 40px;
+    line-height: 280px;
+    font-family: "Montserrat";
+    color: white;
+}
+
+#bandwidth-used-bar-background {
+    height: 15px;
+    background-color: rgb(17, 17, 17);;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#bandwidth-used-bar {
+    background-color: #c5c5c5;
+    width: 0%;
+    height: 100%;
+    border-radius: 10px;
+    background: rgb(204,213,88);
+    background: linear-gradient(90deg, rgba(204,213,88,1) 0%, rgba(97,148,88,1) 70%);
+    transition: 3s;
+}
+
+/* Keyframes */
+@keyframes anim {
+   100% {
+     stroke-dashoffset: calc(187% - 84.15%);
+   } 
 }

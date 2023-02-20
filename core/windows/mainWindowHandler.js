@@ -31,7 +31,7 @@ class MainWindowHandler extends WindowHandler {
             this.options = {
                 width: 900, 
                 height: 700,
-                minWidth: 400,
+                minWidth: 600,
                 minHeight: 400,
                 frame: false,
                 webPreferences : {

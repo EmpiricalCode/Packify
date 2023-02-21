@@ -62,20 +62,22 @@ class LoadingWindowHandler extends WindowHandler {
                                     // (Basically, whether the server is online and functioning properly or not)
                                     if (!res.serverError) {
 
-                                        this.window.hide();
-                
-                                        setTimeout(() => {
+                                        if (this.window) {
+                                            this.window.hide();
+                    
+                                            setTimeout(() => {
 
-                                            if (res.verified) {
-                                                WindowController.spawnWindow("mainWindowHandler");
-                                            } else {
-                                                db.remove(userInfodb, "token");
-                                                WindowController.spawnWindow("loginWindowHandler");
-                                            }
+                                                if (res.verified) {
+                                                    WindowController.spawnWindow("mainWindowHandler");
+                                                } else {
+                                                    db.remove(userInfodb, "token");
+                                                    WindowController.spawnWindow("loginWindowHandler");
+                                                }
 
-                                            this.window.close();   
-                                            resolve(true); 
-                                        }, 1000);
+                                                this.window.close();   
+                                                resolve(true); 
+                                            }, 1000);
+                                        }
 
                                     } else {
                                         // TODO: Handle server error

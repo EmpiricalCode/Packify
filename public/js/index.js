@@ -31,7 +31,7 @@ function switchTabs(name) {
 
         if (name == "home") {
             setTimeout(() => {
-                dataUsedBar.style.animation = "anim 3s cubic-bezier(0,.76,.63,1) forwards";
+                dataUsedBar.style.animation = "anim 2s cubic-bezier(0,.76,.63,1) forwards";
                 bandwidthUsedBar.style.width = "30%";
             }, 200);
         } else {

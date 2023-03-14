@@ -66,13 +66,24 @@ p {
     transition: 0.3s;
     width: calc(100% - 120px - max(40px, min(5vw, 60px)));
     height: calc(100% - 60px);
+    max-width: 1000px;
 }
 
 .tab-title {
     font-family: 'Montserrat', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 23px;
     color: white;
+    margin-bottom: 40px;
+}
+
+.tab-subtitle {
+    font-family: 'Montserrat', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: rgb(215, 215, 215);
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .tab-visible {
@@ -90,14 +101,44 @@ p {
     border-radius: 10px;
 }
 
+.update-gridbox {
+    border: 1px solid #272727;
+}
+
+.update-subgridbox {
+    border: 1px solid #272727;
+}
+
+.recent-file {
+    min-width: 120px;
+    width: 16.6667%;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+    background: linear-gradient(180deg, rgba(22, 22, 22, 1) 0%, rgba(26, 26, 26,1) 40%);
+    border: 1px solid #272727;
+}
+
+.recent-file:hover {
+    cursor: pointer;
+}
+
 /* IDs */
 #body-container {
     width: 100%;
-    height: 100%;
+    height: 120%;
     top: 0px;
     left: 50%;
     display: flex;
     flex-direction: row;
+}
+
+#recent-container {
+    height: auto;
+    display: flex;
+    column-gap: 20px;
+    row-gap: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
 }
 
 #app-menu-bar {
@@ -145,10 +186,6 @@ p {
 #dashboard-welcome-message-subtitle {
     font-family: 'Gotham', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
-}
-
-#home-container { 
-    max-width: 1000px;
 }
 
 #update-container {
@@ -206,7 +243,7 @@ p {
     border-radius: 10px;
     background: rgb(204,213,88);
     background: linear-gradient(90deg, rgba(204,213,88,1) 0%, rgba(97,148,88,1) 70%);
-    transition: 3s;
+    transition: 2s;
 }
 
 /* Keyframes */

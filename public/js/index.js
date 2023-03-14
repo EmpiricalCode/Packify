@@ -87,6 +87,24 @@ window.system.requestUserData().then((userDataRes) => {
 
     setTimeout(() => {
         loaded = true;
-        switchTabs("home");
-    }, 700);
+
+        for (var button of menuBarButtons) {
+            if (button.id.split("-")[0] == "home") {
+                button.querySelector(".menu-bar-button-notch").classList.add("menu-bar-button-notch-active");
+                button.classList.add("menu-bar-button-active");
+            } 
+        }
+
+        for (var tab of tabs) {
+            if (tab.id.split("-")[0] == "home") {
+                tab.classList.add("tab-visible");
+            } else {
+                tab.classList.remove("tab-visible");
+                tab.style.zIndex = -1;
+            }
+        }
+
+        dataUsedBar.style.animation = "anim 2s cubic-bezier(0,.76,.63,1) forwards";
+        bandwidthUsedBar.style.width = "30%";
+    }, 400);
 })

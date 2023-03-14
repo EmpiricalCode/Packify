@@ -29,8 +29,8 @@ class MainWindowHandler extends WindowHandler {
             this.path = path.join(__dirname, "../../public/html/index.html");
             
             this.options = {
-                width: 900, 
-                height: 700,
+                width: 1000, 
+                height: 800,
                 minWidth: 600,
                 minHeight: 400,
                 frame: false,
@@ -44,7 +44,7 @@ class MainWindowHandler extends WindowHandler {
 
             // Initialization
             this.window.once("ready-to-show", () => {
-                this.window.webContents.toggleDevTools();
+                // this.window.webContents.toggleDevTools();
             })
 
             this.window.on("maximize", () => {

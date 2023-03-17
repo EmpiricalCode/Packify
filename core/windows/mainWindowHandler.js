@@ -70,7 +70,6 @@ class MainWindowHandler extends WindowHandler {
                     API.request(config.api_gateway_url, "/requestUserData", formattedData, (success, res) => {
 
                         if (success) {
-                            console.log(res)
                             resolve(res);
                         } else {   
                             console.log(res.error);

@@ -67,9 +67,10 @@ class MainWindowHandler extends WindowHandler {
 
                     const formattedData = {token : db.read(userInfodb).token};
                     
-                    API.request(config.api_gateway_url, "/requestuserdata", formattedData, (success, res) => {
+                    API.request(config.api_gateway_url, "/requestUserData", formattedData, (success, res) => {
 
                         if (success) {
+                            console.log(res)
                             resolve(res);
                         } else {   
                             console.log(res.error);

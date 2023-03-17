@@ -39,7 +39,7 @@ function request(host, path, data, callback) {
           try {
             data = JSON.parse(response_data);
           } catch {
-            callback(false, {"error" : "Invalid JSON data was provided"});
+            callback(false, {"error" : "Invalid JSON data was provided", code : 4});
           }
 
           if (data.error) {
@@ -54,7 +54,7 @@ function request(host, path, data, callback) {
     } else {
       
       if (!timedOut) {
-        callback(false, {"error" : `Request recieved status: ${res.statusCode}`, "serverError" : true});
+        callback(false, {"error" : `Request recieved status: ${res.statusCode}`, "serverError" : true, code : 3});
       }
     }
   })
@@ -73,7 +73,7 @@ function request(host, path, data, callback) {
     timedOut = true;
     req.end();
     
-    callback(false, {"error" : "Request timed out (no response)", "serverError" : true});
+    callback(false, {"error" : "Request timed out (no response)", "serverError" : true, code : 5});
   });
 
   req.end();

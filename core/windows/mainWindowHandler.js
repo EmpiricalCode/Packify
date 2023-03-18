@@ -44,7 +44,7 @@ class MainWindowHandler extends WindowHandler {
 
             // Initialization
             this.window.once("ready-to-show", () => {
-                // this.window.webContents.toggleDevTools();
+                this.window.webContents.toggleDevTools();
             })
 
             this.window.on("maximize", () => {
@@ -63,22 +63,25 @@ class MainWindowHandler extends WindowHandler {
             })
 
             ipcMain.handle("request-user-data", async (event, args) => {
-                const data = await new Promise((resolve, reject) => {
+                return await new Promise((resolve, reject) => {
 
                     const formattedData = {token : db.read(userInfodb).token};
                     
                     API.request(config.api_gateway_url, "/requestUserData", formattedData, (success, res) => {
-
-                        if (success) {
-                            resolve(res);
-                        } else {   
-                            console.log(res.error);
-                            // TODO: Handle error
-                        }
+                        resolve({success, res});
                     });
                 })
+            })
 
-                return data.userData;
+            ipcMain.handle("request-storage-metadata", async (event, args) => {
+                return await new Promise((resolve, reject) => {
+
+                    const formattedData = {token : db.read(userInfodb).token};
+                    
+                    API.request(config.api_gateway_url, "/requestStorageMetadata", formattedData, (success, res) => {
+                        resolve({success, res});
+                    });
+                })
             })
 
             ipcMain.on("close",  (event, args) => {

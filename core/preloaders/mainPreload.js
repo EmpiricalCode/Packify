@@ -9,6 +9,10 @@ contextBridge.exposeInMainWorld("system", {
         return ipcRenderer.invoke("request-user-data");
     },
 
+    requestStorageMetadata: () => {
+        return ipcRenderer.invoke("request-storage-metadata");
+    },
+
     minimize: () => {
         ipcRenderer.send("minimize", {})
     },

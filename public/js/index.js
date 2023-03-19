@@ -5,6 +5,7 @@ var menuBarButtons = document.getElementsByClassName("menu-bar-button");
 var tabs = document.getElementsByClassName("tab-container");
 var dataUsedBar = document.getElementById("data-used-bar");
 var bandwidthUsedBar = document.getElementById("bandwidth-used-bar");
+var tabLoadingIcon = document.getElementById("tab-loading-icon");
 
 let currTab;
 var loaded = true;
@@ -27,6 +28,7 @@ function closeWindow() {
 
 async function switchTabs(name) {
     if (loaded) {
+        tabLoadingIcon.classList.remove("hidden");
         loaded = false;
         currTab = name;
 
@@ -92,6 +94,7 @@ async function switchTabs(name) {
         } 
 
         loaded = true;
+        tabLoadingIcon.classList.add("hidden");
 
         // Showing new tab
         for (var tab of tabs) {

@@ -35,6 +35,15 @@ input:focus {
     border: 1px solid rgb(200, 200, 200);
 }
 
+/* Classes */
+.hidden {
+    opacity: 0;
+}
+
+.visible {
+    opacity: 1;
+}
+
 /* Webkit */
 @-webkit-keyframes rotating {
     from{

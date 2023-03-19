@@ -18,7 +18,9 @@ const userInfodb = db.create(`${config.app_data_path}/db`, "userInfo");
 class MainWindowHandler extends WindowHandler {
 
     static channels = [
-        "request-app-version"
+        "request-app-version",
+        "request-user-data",
+        "request-storage-metadata"
     ]
 
     static spawn() {

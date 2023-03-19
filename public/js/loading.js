@@ -6,9 +6,6 @@ var logo = document.getElementById("logo");
 // Main
 setTimeout(() => {
     logo.style.top = "-40px";
-    logo.classList.add("visible");
-    loadingIcon.classList.add("visible");
-
     logo.classList.remove("hidden");
     loadingIcon.classList.remove("hidden");
 }, 500);

@@ -27,7 +27,7 @@ function closeWindow() {
 }
 
 async function switchTabs(name) {
-    if (loaded) {
+    if (loaded && name != currTab) {
         tabLoadingIcon.classList.remove("hidden");
         loaded = false;
         currTab = name;

@@ -32,6 +32,8 @@ async function switchTabs(name) {
         loaded = false;
         currTab = name;
 
+        var success = true;
+
         // Hiding current tab
         for (var button of menuBarButtons) {
             if (button.id.split("-")[0] == name) {
@@ -83,11 +85,11 @@ async function switchTabs(name) {
 
             success = ipcMainResponse.success;
             res = ipcMainResponse.res;
-
-            console.log(res);
         
             if (success) {
-                
+                metadata = res.metadata;
+
+                console.log(metadata);
             } else {
                 // TODO: Handle errors
             }
@@ -97,11 +99,13 @@ async function switchTabs(name) {
         tabLoadingIcon.classList.add("hidden");
 
         // Showing new tab
-        for (var tab of tabs) {
-            if (tab.id.split("-")[0] == name) {
+        if (success) {
+            for (var tab of tabs) {
+                if (tab.id.split("-")[0] == name) {
 
-                tab.style.zIndex = 10;
-                tab.classList.add("tab-visible");
+                    tab.style.zIndex = 10;
+                    tab.classList.add("tab-visible");
+                }
             }
         }
     }

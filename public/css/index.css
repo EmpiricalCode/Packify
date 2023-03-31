@@ -122,6 +122,38 @@ p {
     cursor: pointer;
 }
 
+.file {
+    width: 148px;
+    flex-shrink: 0;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+    background: linear-gradient(180deg, rgba(22, 22, 22, 1) 0%, rgba(26, 26, 26,1) 40%);
+    border: 1px solid #272727;
+}
+
+.file:hover {
+    cursor: pointer;
+}
+
+.folder {
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    background: linear-gradient(180deg, rgb(30, 30, 30) 0%, rgb(35, 35, 35) 40%);
+    border: 1px solid #272727;
+
+    color: rgb(200, 200, 200);
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height: 40px;
+    font-size: 13px;
+    font-family: 'Montserrat', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.folder:hover {
+    cursor: pointer;
+}
+
 /* IDs */
 #body-container {
     width: 100%;
@@ -130,6 +162,18 @@ p {
     left: 50%;
     display: flex;
     flex-direction: row;
+}
+
+#folder-container {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%/3, max(148px, 100%/5)), 1fr));
+}
+
+#files-object-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 #recent-container {

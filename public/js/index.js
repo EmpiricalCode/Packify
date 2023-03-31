@@ -13,6 +13,9 @@ var loaded = true;
 let userData;
 let userStatistics;
 
+var currentLocation = {};
+
+
 // Functions
 function minimize() {
     window.system.minimize();

@@ -148,6 +148,9 @@ p {
     line-height: 40px;
     font-size: 13px;
     font-family: 'Montserrat', Tahoma, Geneva, Verdana, sans-serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .folder:hover {

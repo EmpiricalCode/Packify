@@ -144,10 +144,11 @@ p {
     flex-shrink: 0;
     border-radius: 5px;
     background: linear-gradient(180deg, rgb(30, 30, 30) 0%, rgb(35, 35, 35) 40%);
+    background-image: url("../images/migrated/folder-icon-solid.png");
     border: 1px solid #272727;
 
     color: rgb(200, 200, 200);
-    padding-left: 15px;
+    padding-left: 50px;
     padding-right: 15px;
     line-height: 40px;
     font-size: 13px;
@@ -155,6 +156,10 @@ p {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    background-image: url("../assets/images/migrated/folder-icon-solid.png");
+    background-repeat: no-repeat;
+    background-position: 10px;
+    background-size: 30px;
 }
 
 .folder:hover {

@@ -29,6 +29,18 @@ function closeWindow() {
     window.system.close();
 }
 
+function hideSection(sectionName) {
+    for (var element of document.getElementsByClassName(sectionName)) {
+        element.style.display = "none";
+    }
+}
+
+function showSection(sectionName) {
+    for (var element of document.getElementsByClassName(sectionName)) {
+        element.style.display = element.dataset.originaldisplay;
+    }
+}
+
 async function switchTabs(name) {
     if (loaded && name != currTab) {
         tabLoadingIcon.classList.remove("hidden");

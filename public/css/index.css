@@ -135,6 +135,10 @@ p {
     cursor: pointer;
 }
 
+.folder-section, .recent-section, .files-section {
+    display: flex;
+}
+
 .folder {
     height: 40px;
     flex-shrink: 0;
@@ -312,4 +316,8 @@ p {
     -webkit-animation: rotating 3s linear infinite;
 
     transition: 0.5s;
+}
+
+#no-display {
+    display: none;
 }

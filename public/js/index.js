@@ -6,14 +6,17 @@ var tabs = document.getElementsByClassName("tab-container");
 var dataUsedBar = document.getElementById("data-used-bar");
 var bandwidthUsedBar = document.getElementById("bandwidth-used-bar");
 var tabLoadingIcon = document.getElementById("tab-loading-icon");
+var folderContainer = document.getElementById("folder-container");
+var filesObjectContainer = document.getElementById("files-object-container");
 
 let currTab;
 var loaded = true;
 
 let userData;
+let userStorageMetadata;
 let userStatistics;
 
-var currentLocation = {};
+var currentLocation = [];
 
 
 // Functions
@@ -39,6 +42,47 @@ function showSection(sectionName) {
     for (var element of document.getElementsByClassName(sectionName)) {
         element.style.display = element.dataset.originaldisplay;
     }
+}
+
+function loadStorage() {
+
+    hideSection("recent-section");
+    hideSection("folder-section");
+    hideSection("files-section");
+
+    folderContainer.innerHTML = "";
+    filesObjectContainer.innerHTML = "";
+
+    var currentDirectory = userStorageMetadata;
+
+    currentLocation.forEach((nextPath) => {
+        currentDirectory = currentDirectory[nextPath];
+    });
+
+    console.log(currentDirectory)
+
+    Object.entries(currentDirectory).forEach((pair) => {
+        if (currentDirectory[pair[0]] == "file") {
+
+            showSection("files-section");
+            var fileObject = document.createElement("div");
+
+            fileObject.classList.add("file");
+            filesObjectContainer.appendChild(fileObject);
+        } else {
+
+            showSection("folder-section");
+            var folderObject = document.createElement("div");
+
+            folderObject.innerHTML = pair[0];
+            folderObject.classList.add("folder");
+            folderContainer.appendChild(folderObject);
+        }
+    })
+
+    if (currentLocation.length == 0) {
+        showSection("recent-section");
+    } 
 }
 
 async function switchTabs(name) {
@@ -102,9 +146,10 @@ async function switchTabs(name) {
             res = ipcMainResponse.res;
         
             if (success) {
-                metadata = res.metadata;
+                userStorageMetadata = res.metadata;
 
-                console.log(metadata);
+                console.log(userStorageMetadata);
+                loadStorage();
             } else {
                 // TODO: Handle errors
             }

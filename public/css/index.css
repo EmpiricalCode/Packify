@@ -148,7 +148,7 @@ p {
     border: 1px solid #272727;
 
     color: rgb(200, 200, 200);
-    padding-left: 50px;
+    padding-left: 45px;
     padding-right: 15px;
     line-height: 40px;
     font-size: 13px;
@@ -159,7 +159,7 @@ p {
     background-image: url("../assets/images/migrated/folder-icon-solid.png");
     background-repeat: no-repeat;
     background-position: 10px;
-    background-size: 30px;
+    background-size: 25px;
 }
 
 .folder:hover {

@@ -8,6 +8,7 @@ var bandwidthUsedBar = document.getElementById("bandwidth-used-bar");
 var tabLoadingIcon = document.getElementById("tab-loading-icon");
 var folderContainer = document.getElementById("folder-container");
 var filesObjectContainer = document.getElementById("files-object-container");
+var pathContainer = document.getElementById("path-container");
 
 let currTab;
 var loaded = true;
@@ -44,23 +45,56 @@ function showSection(sectionName) {
     }
 }
 
+function spawnPathButton(currentPathSection) {
+    var pathButtonDivider = document.createElement("p");
+    pathButtonDivider.classList.add("path-button-divider");
+    pathButtonDivider.innerText = "/";
+    pathContainer.appendChild(pathButtonDivider);
+
+    var pathButton = document.createElement("a");
+    pathButton.classList.add("path-button");
+    pathButton.innerHTML = currentPathSection;
+
+    pathButton.onclick = () => {
+        const num = Math.floor((Array.from(pathButton.parentNode.children).indexOf(pathButton) + 1) / 2) - 1;
+
+        while (currentLocation.length > num) {
+            currentLocation.pop();
+        }
+
+        loadStorage();
+    };
+
+    pathContainer.appendChild(pathButton);
+}
+
 function loadStorage() {
 
     hideSection("recent-section");
     hideSection("folder-section");
     hideSection("files-section");
+    hideSection("path-section");
 
+    pathContainer.innerHTML = "";
     folderContainer.innerHTML = "";
     filesObjectContainer.innerHTML = "";
 
     var currentDirectory = userStorageMetadata;
 
+    if (currentLocation.length > 0) {
+        spawnPathButton("Home");
+    }
+
     currentLocation.forEach((nextPath) => {
+
+        // Updating path container
+        spawnPathButton(nextPath);
+        
+        // Getting the current directory
         currentDirectory = currentDirectory[nextPath];
     });
 
-    console.log(currentDirectory)
-
+    // Creating file and folder objects
     Object.entries(currentDirectory).forEach((pair) => {
         if (currentDirectory[pair[0]] == "file") {
 
@@ -76,9 +110,19 @@ function loadStorage() {
 
             folderObject.innerHTML = pair[0];
             folderObject.classList.add("folder");
+
+            folderObject.onclick = () => {
+                currentLocation.push(folderObject.innerHTML);
+                loadStorage();
+            }
+
             folderContainer.appendChild(folderObject);
         }
     })
+
+    if (pathContainer.innerHTML != "") {
+        showSection("path-section");
+    }
 
     if (currentLocation.length == 0) {
         showSection("recent-section");

@@ -167,6 +167,18 @@ p {
     cursor: pointer;
 }
 
+.path-button {
+    color: grey;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.path-button-divider {
+    padding: 0 5px 0 5px;
+    font-size: 15px;
+    display: inline;
+}
+
 /* IDs */
 #body-container {
     width: 100%;
@@ -175,6 +187,11 @@ p {
     left: 50%;
     display: flex;
     flex-direction: row;
+}
+
+#path-container {
+    margin-top: -20px;
+    margin-bottom: 40px;
 }
 
 #folder-container {

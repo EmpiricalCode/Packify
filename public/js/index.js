@@ -45,24 +45,52 @@ function showSection(sectionName) {
     }
 }
 
+function reloadStorage() {
+    loaded = false;
+
+    for (var tab of tabs) {
+        if (tab.id.split("-")[0] == "files") {
+            tab.classList.remove("tab-visible");
+            tab.style.zIndex = -1;
+        }
+    }
+
+    setTimeout(() => {
+
+        loadStorage();
+        loaded = true;
+
+        for (var tab of tabs) {
+            if (tab.id.split("-")[0] == "files") {
+
+                tab.style.zIndex = 10;
+                tab.classList.add("tab-visible");
+            }
+        }
+    }, 200);
+}
+
 function spawnPathButton(currentPathSection) {
-    var pathButtonDivider = document.createElement("p");
-    pathButtonDivider.classList.add("path-button-divider");
-    pathButtonDivider.innerText = "/";
-    pathContainer.appendChild(pathButtonDivider);
+
+    if (pathContainer.innerHTML != "") {
+        var pathButtonDivider = document.createElement("p");
+        pathButtonDivider.classList.add("path-button-divider");
+        pathButtonDivider.innerText = "/";
+        pathContainer.appendChild(pathButtonDivider);
+    }
 
     var pathButton = document.createElement("a");
     pathButton.classList.add("path-button");
     pathButton.innerHTML = currentPathSection;
 
     pathButton.onclick = () => {
-        const num = Math.floor((Array.from(pathButton.parentNode.children).indexOf(pathButton) + 1) / 2) - 1;
+        const num = Math.floor((Array.from(pathButton.parentNode.children).indexOf(pathButton) + 1) / 2);
 
         while (currentLocation.length > num) {
             currentLocation.pop();
         }
 
-        loadStorage();
+        reloadStorage();
     };
 
     pathContainer.appendChild(pathButton);
@@ -82,7 +110,7 @@ function loadStorage() {
     var currentDirectory = userStorageMetadata;
 
     if (currentLocation.length > 0) {
-        spawnPathButton("Home");
+        spawnPathButton("Files");
     }
 
     currentLocation.forEach((nextPath) => {
@@ -113,7 +141,7 @@ function loadStorage() {
 
             folderObject.onclick = () => {
                 currentLocation.push(folderObject.innerHTML);
-                loadStorage();
+                reloadStorage();
             }
 
             folderContainer.appendChild(folderObject);

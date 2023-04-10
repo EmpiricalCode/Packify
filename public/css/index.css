@@ -145,7 +145,6 @@ p {
     flex-shrink: 0;
     border-radius: 5px;
     background: linear-gradient(180deg, rgb(30, 30, 30) 0%, rgb(35, 35, 35) 40%);
-    background-image: url("../images/migrated/folder-icon-solid.png");
     border: 1px solid #272727;
 
     color: rgb(200, 200, 200);
@@ -161,16 +160,24 @@ p {
     background-repeat: no-repeat;
     background-position: 10px;
     background-size: 25px;
+    transition: 0.3s;
 }
 
 .folder:hover {
     cursor: pointer;
+    border-color: rgb(180, 180, 180);
+    color: white;
 }
 
 .path-button {
     color: grey;
     font-size: 15px;
     cursor: pointer;
+    transition: 0.2s;
+}
+
+.path-button:hover {
+    color: rgb(200, 200, 200);
 }
 
 .path-button-divider {

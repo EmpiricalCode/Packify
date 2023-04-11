@@ -141,7 +141,6 @@ p {
 
 .folder {
     height: 40px;
-    max-width: calc(50% - 70px);
     flex-shrink: 0;
     border-radius: 5px;
     background: linear-gradient(180deg, rgb(30, 30, 30) 0%, rgb(35, 35, 35) 40%);

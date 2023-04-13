@@ -1,6 +1,7 @@
 // Variables
 var maximized = false;
 var appResizeButton = document.getElementById("app-resize-button");
+var filesContainer = document.getElementById("files-container");
 var menuBarButtons = document.getElementsByClassName("menu-bar-button");
 var tabs = document.getElementsByClassName("tab-container");
 var dataUsedBar = document.getElementById("data-used-bar");

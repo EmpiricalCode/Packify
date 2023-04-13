@@ -1,3 +1,20 @@
+// Variables
+var rightClickMenuPromptArea = document.getElementById("right-click-menu-prompt-area");
+var rightClickMenuShowing = false;
+
+// Functions
+function promptRightClickMenu(event) {
+
+    var rightClickMenu = document.createElement("div");
+    rightClickMenu.style.width = "50px";
+    rightClickMenu.style.height = "100px";
+    rightClickMenu.style.background = "green";
+    rightClickMenu.style.top = event.offsetY + "px";
+    rightClickMenu.style.left = event.offsetX + "px";
+    rightClickMenu.style.position = "absolute";
+    filesContainer.appendChild(rightClickMenu);
+}
+
 function reloadStorage() {
     loaded = false;
 
@@ -81,6 +98,7 @@ function loadStorage() {
 
             showSection("files-section");
             var fileObject = document.createElement("div");
+            fileObject.innerHTML = pair[0];
 
             fileObject.classList.add("file");
             filesObjectContainer.appendChild(fileObject);
@@ -109,3 +127,10 @@ function loadStorage() {
         showSection("recent-section");
     } 
 }
+
+// Main
+rightClickMenuPromptArea.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+    promptRightClickMenu(event);
+    return false;
+}, false);

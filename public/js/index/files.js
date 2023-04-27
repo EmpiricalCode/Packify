@@ -5,13 +5,23 @@ var rightClickMenuShowing = false;
 // Functions
 function promptRightClickMenu(event) {
 
+    for (var element of document.getElementsByClassName("right-click-menu")) {
+        element.remove();
+    }
+
     var rightClickMenu = document.createElement("div");
-    rightClickMenu.style.width = "50px";
-    rightClickMenu.style.height = "100px";
-    rightClickMenu.style.background = "green";
+
+    rightClickMenu.classList.add("right-click-menu");
     rightClickMenu.style.top = event.offsetY + "px";
     rightClickMenu.style.left = event.offsetX + "px";
     rightClickMenu.style.position = "absolute";
+
+    setTimeout(() => {
+        rightClickMenu.style.opacity = 1;
+        rightClickMenu.style.marginTop = "0px";
+        rightClickMenu.style.height = "200px";
+    }, 10);
+
     filesContainer.appendChild(rightClickMenu);
 }
 

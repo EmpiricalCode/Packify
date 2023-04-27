@@ -29,6 +29,19 @@ p {
 .app-menu-bar-button:hover {
     background-color: rgb(58, 58, 58);
 }
+
+.right-click-menu {
+    width: 150px;
+    margin-top: -10px;
+    height: 0;
+    opacity: 0;
+    border-radius: 5px;
+    border: 1px solid #272727;
+    background-color: rgb(26, 26, 26);
+    overflow: hidden;
+    white-space: nowrap;
+    transition: 0.5s;
+}
  
 .menu-bar-button {
     width: 100%;

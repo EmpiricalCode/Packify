@@ -3,11 +3,19 @@ var rightClickMenuPromptArea = document.getElementById("right-click-menu-prompt-
 var rightClickMenuShowing = false;
 
 // Functions
-function promptRightClickMenu(event) {
+function promptCreateFolder() {
 
+}
+
+function removeRightClickMenu() {
     for (var element of document.getElementsByClassName("right-click-menu")) {
         element.remove();
     }
+}
+
+function promptRightClickMenu(event) {
+
+    removeRightClickMenu();
 
     var rightClickMenu = document.createElement("div");
 
@@ -15,6 +23,11 @@ function promptRightClickMenu(event) {
     rightClickMenu.style.top = event.offsetY + "px";
     rightClickMenu.style.left = event.offsetX + "px";
     rightClickMenu.style.position = "absolute";
+
+    // Clicking off menu
+    rightClickMenu.addEventListener("click", (event) => {
+        event.stopPropagation();
+    });
 
     setTimeout(() => {
         rightClickMenu.style.opacity = 1;
@@ -139,8 +152,13 @@ function loadStorage() {
 }
 
 // Main
-rightClickMenuPromptArea.addEventListener('contextmenu', function(event) {
+// Prompting menu creation
+rightClickMenuPromptArea.addEventListener("contextmenu", (event) => {
     event.preventDefault();
     promptRightClickMenu(event);
-    return false;
 }, false);
+
+// Clicking off menu
+document.body.addEventListener("click", (event) => {
+    removeRightClickMenu();
+});

@@ -51,18 +51,28 @@ p {
     background-color: transparent;
     display: flex;
     padding: 0;
+    align-items: center;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: 30px;
     background-size: 17px auto;
     transition: 0.3s;
 }
 
+.menu-bar-button-label {
+    padding-left: 60px;
+    font-size: 14px;
+    color: white;
+    font-family: "Montserrat ExtraLight";
+}
+
 .menu-bar-button-notch {
+    margin-right: 0;
     width: 1px;
     height: 100%;
-    background-color: white;
     opacity: 0;
     transition: 0.3s;
+    flex-grow: 1;
+    border-right: 1px solid white;
 }
 
 .menu-bar-button-active, .menu-bar-button:hover {
@@ -78,7 +88,7 @@ p {
     position: fixed;
     opacity: 0;
     transition: 0.3s;
-    width: calc(100% - 120px - max(40px, min(5vw, 60px)));
+    width: calc(100% - 220px - max(40px, min(5vw, 60px)));
     height: calc(100% - 60px);
     max-width: 1000px;
 }
@@ -305,12 +315,6 @@ p {
     margin-bottom: 30px;
 }
 
-#folder-container {
-    /* display: grid;
-    grid-gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%/3, max(148px, 100%/5)), 1fr)); */
-}
-
 #files-object-container {
     display: block;
 }
@@ -344,11 +348,11 @@ p {
 #menu-bar {
     display: flex;
     flex-direction: column;
-    width: 80px;
+    width: 180px;
 }
 
 #content-container {
-    width: calc(100% - 80px);
+    width: calc(100% - 160px);
     height: 100%;
     display: flex;
     justify-content: center;

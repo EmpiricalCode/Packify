@@ -40,7 +40,7 @@ p {
     background-color: rgb(26, 26, 26);
     overflow: hidden;
     white-space: nowrap;
-    transition: 0.5s;
+    transition: 0.3s;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
 }
  

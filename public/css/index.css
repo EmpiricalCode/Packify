@@ -137,14 +137,13 @@ p {
 }
 
 .file {
-    width: 100%;
     display: block;
     border-top: 1px solid #272727;
     border-bottom: 1px solid #272727;
     border-left: 1px solid transparent;
     border-right: 1px solid transparent;
     color: rgb(160, 160, 160);
-    padding: 9px 0 9px 9px;
+    padding: 12px 0 12px 9px;
     font-size: 14px;
     font-family: 'Montserrat';
     margin-top: -1px;
@@ -158,9 +157,6 @@ p {
     border-radius: 5px;
     color: white;
     z-index: 100;
-}
-
-.file:hover {
     cursor: pointer;
 }
 
@@ -169,6 +165,35 @@ p {
 }
 
 .folder {
+    display: block;
+    border-top: 1px solid #272727;
+    border-bottom: 1px solid #272727;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    overflow: hidden;
+    background-image: url("../assets/images/migrated/folder-icon-solid.png");
+    background-repeat: no-repeat;
+    background-position: 10px;
+    background-size: 25px;
+    color: rgb(160, 160, 160);
+    padding: 12px 0 12px 45px;
+    font-size: 14px;
+    font-family: 'Montserrat';
+    margin-top: -1px;
+    position: relative;
+    transition: 0.2s;
+}
+
+.folder:hover {
+    cursor: pointer;
+    border: 1px solid rgb(150, 150, 150);
+    border-radius: 5px;
+    color: white;
+    z-index: 100;
+}
+
+/* Grid Style Folder Layout */
+/* .folder {
     height: 40px;
     flex-shrink: 0;
     border-radius: 5px;
@@ -195,7 +220,7 @@ p {
     cursor: pointer;
     border-color: rgb(180, 180, 180);
     color: white;
-}
+} */
 
 .path-button {
     color: grey;
@@ -281,9 +306,9 @@ p {
 }
 
 #folder-container {
-    display: grid;
+    /* display: grid;
     grid-gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%/3, max(148px, 100%/5)), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%/3, max(148px, 100%/5)), 1fr)); */
 }
 
 #files-object-container {

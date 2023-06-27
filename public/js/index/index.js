@@ -4,8 +4,6 @@ var appResizeButton = document.getElementById("app-resize-button");
 var filesContainer = document.getElementById("files-container");
 var menuBarButtons = document.getElementsByClassName("menu-bar-button");
 var tabs = document.getElementsByClassName("tab-container");
-var dataUsedBar = document.getElementById("data-used-bar");
-var bandwidthUsedBar = document.getElementById("bandwidth-used-bar");
 var tabLoadingIcon = document.getElementById("tab-loading-icon");
 var folderContainer = document.getElementById("folder-container");
 var filesObjectContainer = document.getElementById("files-object-container");
@@ -48,13 +46,14 @@ function showSection(sectionName) {
 
 async function switchTabs(name) {
     if (loaded && name != currTab) {
+
         tabLoadingIcon.classList.remove("hidden");
         loaded = false;
         currTab = name;
 
         var success = true;
 
-        // Hiding current tab
+        // Selecting current menu bar button
         for (var button of menuBarButtons) {
             if (button.id.split("-")[0] == name) {
                 button.querySelector(".menu-bar-button-notch").classList.add("menu-bar-button-notch-active");
@@ -65,6 +64,7 @@ async function switchTabs(name) {
             }
         }
 
+        // Hiding tabs
         for (var tab of tabs) {
             if (tab.id.split("-")[0] != name) {
                 tab.classList.remove("tab-visible");
@@ -82,20 +82,13 @@ async function switchTabs(name) {
         
             if (success) {
                 userData = res.userData;
-                document.getElementById("dashboard-welcome-message").innerHTML = "Welcome back, " + userData.username;
+            
             } else {
                 // TODO: Handle errors
             }
 
-            setTimeout(() => {
-                dataUsedBar.style.animation = "anim 2s cubic-bezier(0,.76,.63,1) forwards";
-                bandwidthUsedBar.style.width = "30%";
-            }, 50);
         } else {
-            setTimeout(() => {
-                dataUsedBar.style.animation = "";
-                bandwidthUsedBar.style.width = "0%";
-            }, 200);
+
         }
 
         // Switching to files tab

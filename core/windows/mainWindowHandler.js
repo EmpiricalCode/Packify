@@ -33,8 +33,8 @@ class MainWindowHandler extends WindowHandler {
             this.options = {
                 width: 1000, 
                 height: 800,
-                minWidth: 600,
-                minHeight: 400,
+                minWidth: 770,
+                minHeight: 600,
                 frame: false,
                 webPreferences : {
                     preload: path.join(__dirname, "../preloaders/mainPreload.js"),

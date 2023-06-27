@@ -28,45 +28,44 @@
                 <img src="../assets/images/loading-icon.png" class="" id="tab-loading-icon">
                 <div id="home-container" class="tab-container">
                     <p class="tab-title">Dashboard</p>
-                    <p id="dashboard-welcome-message">Welcome back, </p>
-                    <p id="dashboard-welcome-message-subtitle">👋 Good to see you again! Here are some updates.</p>
 
-                    <div id="update-container">
-                        <div class="update-gridbox" style="display: flex; flex-direction: column; align-items: center;">
-                            <div id="data-used-bar-container">
-                                <p id="data-used-percent">45%</p>
+                    <p class="tab-subtitle usage-section" data-originaldisplay="block" style="margin-top: 58px">Usage Information</p>
+
+                    <div class="usage-container">
+                        <div id="storage-usage" class="usage-subcontainer">
+                            <p class="usage-title">Storage Used</p>
+                            <div class="usage-bar-container">
+                                <div class="usage-bar"></div>
                             </div>
-                            <svg width="100%" height="260px" style="margin-top: 50px" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                                <defs>
-                                <linearGradient id="GradientColor">
-                                    <stop offset="30%" stop-color="#619458" />
-                                    <stop offset="100%" stop-color="#ccd558" />
-                                </linearGradient>
-                                </defs>
-                                <circle id="data-used-bar-background" cx="50%" cy="50%" r="30%" stroke-linecap="round" />
-                                <circle id="data-used-bar" cx="50%" cy="50%" r="30%" stroke-linecap="round" />
-                            </svg>
-                            <p id="data-used-subtitle">9 out of 20 Megabytes of storage used</p>
-                            
+                            <p class="usage-subtitle">4 out of 10 MB</p>
                         </div>
-
-                        <div class="update-gridbox" style="background: none; border-radius: 0px; display: grid; grid-gap: 20px; border: none;">
-                            <div class="update-subgridbox" style="display: flex; flex-direction: column; justify-content: center; padding: 30px;">
-                                <p style="font-size: 60px; margin: 0; color: white; font-family: 'Montserrat'; background: -webkit-linear-gradient(#eee, #aaa); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">10</p>
-                                <p style="font-size: 20px; margin-top: 10px; color: white; margin-bottom: 10px; font-family: 'Gotham';">Downloads This Week</p>
+                        <div id="bandwidth-usage" class="usage-subcontainer">
+                            <p class="usage-title">Bandwith This Month</p>
+                            <div class="usage-bar-container">
+                                <div class="usage-bar"></div>
                             </div>
-                            <div class="update-subgridbox" style="display: flex; flex-direction: column; justify-content: center; padding: 30px;">
-
-                                <p style="padding-top: 20px; font-size: 25px; color: white; font-family: 'Montserrat'; margin-top: 10px; margin-bottom: 10px;">Bandwidth</p>
-                                <div id="bandwidth-used-bar-background">
-                                    <div id="bandwidth-used-bar"></div>
-                                </div>
-                                <p style="padding-bottom: 20px; margin-bottom: 0px; font-size: 15px;">3 out of 10 Megabytes used today</p>
-                            </div>
+                            <p class="usage-subtitle">4 out of 10 MB</p>
                         </div>
-                    </div> 
+                        <div id="weekly-downloads" class="usage-subcontainer">
+                            <p class="usage-title">Downloads This Month</p>
+                            <div class="usage-bar-container">
+                                <div class="usage-bar"></div>
+                            </div>
+                            <p class="usage-subtitle">56 out of 100 downloads</p>
+                        </div>
+                    </div>
+
+                    <p class="tab-subtitle dashboard-recent-section" data-originaldisplay="block">Recent Files</p>
+                    <div class="recent-container dashboard-recent-section" data-originaldisplay="flex">
+                        <div class="recent-file"></div>
+                        <div class="recent-file"></div>
+                        <div class="recent-file"></div>
+                        <div class="recent-file"></div>
+                        <div class="recent-file"></div>
+                        <div class="recent-file"></div>
+                        <div style="pointer-events: none; position: fixed; right: 40px; width: 200px; height: 152px; background: rgb(22,22,22); background: linear-gradient(70deg, rgba(0,0,0,0) 0%, rgba(25,25,25,1) 88%);"></div>
+                    </div>
                 </div>
-
                 <div id="files-container" class="tab-container">
 
                     <div id="create-folder-prompt-container" class="hidden">
@@ -84,7 +83,7 @@
                         <a class="path-button">File</a>
                     </div>
                     <p class="tab-subtitle recent-section" data-originaldisplay="block" style="margin-top: 58px">Recent</p>
-                    <div id="recent-container" class="recent-section" data-originaldisplay="flex">
+                    <div class="recent-container recent-section" data-originaldisplay="flex">
                         <div class="recent-file"></div>
                         <div class="recent-file"></div>
                         <div class="recent-file"></div>
